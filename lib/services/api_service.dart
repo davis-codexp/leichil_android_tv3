@@ -1,0 +1,90 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'auth_storage.dart';
+
+class ApiResponse {
+  final int statusCode;
+  final dynamic data;
+
+  const ApiResponse({required this.statusCode, required this.data});
+
+  bool get isSuccess => statusCode >= 200 && statusCode < 300;
+}
+
+class ApiService {
+  ApiService._();
+
+  static const String baseUrl = 'https://leichiltv.com';
+
+  static Future<Map<String, String>> _headers() async {
+    final token = await AuthStorage.getToken();
+
+    final headers = <String, String>{
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    if (token != null && token.isNotEmpty) {
+      headers['Authorization'] = token;
+    }
+
+    return headers;
+  }
+
+  static Future<ApiResponse> post(
+    String endpoint,
+    Map<String, dynamic> body,
+  ) async {
+    try {
+      final response = await http
+          .post(
+            Uri.parse('$baseUrl$endpoint'),
+            headers: await _headers(),
+            body: jsonEncode(body),
+          )
+          .timeout(const Duration(seconds: 10));
+
+      dynamic data;
+
+      if (response.body.isNotEmpty) {
+        try {
+          data = jsonDecode(response.body);
+        } catch (_) {
+          data = response.body;
+        }
+      }
+
+      return ApiResponse(statusCode: response.statusCode, data: data);
+    } catch (e) {
+      return const ApiResponse(
+        statusCode: 500,
+        data: {'success': false, 'message': 'Unable to connect to server'},
+      );
+    }
+  }
+
+  static Future<ApiResponse> get(String endpoint) async {
+    try {
+      final response = await http
+          .get(Uri.parse('$baseUrl$endpoint'), headers: await _headers())
+          .timeout(const Duration(seconds: 10));
+
+      dynamic data;
+
+      if (response.body.isNotEmpty) {
+        try {
+          data = jsonDecode(response.body);
+        } catch (_) {
+          data = response.body;
+        }
+      }
+
+      return ApiResponse(statusCode: response.statusCode, data: data);
+    } catch (e) {
+      return const ApiResponse(
+        statusCode: 500,
+        data: {'success': false, 'message': 'Unable to connect to server'},
+      );
+    }
+  }
+}
