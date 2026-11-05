@@ -9,6 +9,8 @@ import '../../widgets/navigation/tv_focus_style.dart';
 import '../../widgets/navigation/tv_focus_wrapper.dart';
 import '../../widgets/rows/tv_movie_row_landscape.dart';
 import '../details/detail_screen.dart';
+import '../checkouts_and_subscriptions/checkout_screen.dart';
+import '../checkouts_and_subscriptions/subscription_screen.dart';
 import '../player/player_screen.dart';
 import '../view_all/view_all_screen.dart';
 import '../../services/api_service.dart';
@@ -237,28 +239,32 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   VideoModel _toVideoModel(HomeContentItem item) {
-    final genres = item.genre
-        .split(',')
-        .map((genre) => genre.trim())
-        .where((genre) => genre.isNotEmpty)
-        .toList();
+  final genres = item.genre
+      .split(',')
+      .map((genre) => genre.trim())
+      .where((genre) => genre.isNotEmpty)
+      .toList();
 
-    return VideoModel(
-      id: item.id.toString(),
-      title: item.name,
-      description: '',
-      year: item.releaseYear,
-      duration: '',
-      category: item.genre,
-      language: 'Manipuri',
-      rating: item.rating,
-      thumbnail: item.thumbnail,
-      tvThumbnail: item.tvThumbnail,
-      banner: item.banner,
-      titleImage: item.titleImage,
-      genres: genres,
-    );
-  }
+  return VideoModel(
+    id: item.id.toString(),
+    title: item.name,
+    description: '',
+    year: item.releaseYear,
+    duration: '',
+    category: item.genre,
+
+    contentCategory: item.contentCategory,
+    isPremium: item.isPremium,
+
+    language: 'Manipuri',
+    rating: item.rating,
+    thumbnail: item.thumbnail,
+    tvThumbnail: item.tvThumbnail,
+    banner: item.banner,
+    titleImage: item.titleImage,
+    genres: genres,
+  );
+}
 
   VideoModel _asSeries(VideoModel video) {
     return VideoModel(
@@ -345,19 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     try {
-      // Step 1: Verify subscription.
-      final subscription = await ContentService.verifySubscription();
-
-      if (!mounted) return;
-
-      if (subscription.statusCode != 200 ||
-          subscription.data is! Map ||
-          subscription.data['success'] != true) {
-        _showHomeMessage('An active subscription is required to play.');
-        return;
-      }
-
-      // Step 2: Fetch the latest content details.
+      // Fetch the latest content details before checking access.
       final response = await ContentService.getContent(id);
 
       if (!mounted) return;
@@ -372,8 +366,85 @@ class _HomeScreenState extends State<HomeScreen> {
 
       final content = Map<String, dynamic>.from(response.data['result']);
 
-      var streamUrl =
-          (content['video'] ??
+      // Use the category returned by the API, with the home model as fallback.
+      final category = (content['content_category'] ??
+              content['category'] ??
+              content['contentCategory'] ??
+              video.contentCategory)
+          .toString()
+          .trim()
+          .toUpperCase();
+
+      final isPremium = category == 'PREMIUM' || category == 'SHARED';
+      final isSubscription = category == 'SUBSCRIPTION';
+
+      final title = content['name']?.toString().trim().isNotEmpty == true
+          ? content['name'].toString()
+          : video.title;
+
+      final posterValue = content['thumbnail'] ??
+          content['tv_thumbnail'] ??
+          content['tvThumbnail'] ??
+          video.thumbnail;
+      final posterUrl = posterValue?.toString();
+
+      final rawPrice = content['price'] ?? 0;
+      final price = rawPrice is num
+          ? rawPrice.toInt()
+          : int.tryParse(rawPrice.toString()) ?? 0;
+
+      // Premium and shared content require an individual purchase.
+      if (isPremium) {
+        final purchaseResponse = await ApiService.get(
+          '/api/v1/app/orders/purchases/$id',
+        );
+
+        if (!mounted) return;
+
+        final isPurchased = purchaseResponse.statusCode == 200 &&
+            purchaseResponse.data is Map &&
+            purchaseResponse.data['success'] == true;
+
+        if (!isPurchased) {
+          Navigator.of(context, rootNavigator: true).push(
+            MaterialPageRoute(
+              builder: (_) => CheckoutScreen(
+                title: title,
+                posterUrl: posterUrl,
+                moviePrice: price,
+                subscriptionPrice: 49,
+                subscriptionDiscount: 49,
+              ),
+            ),
+          );
+          return;
+        }
+      }
+
+      // Subscription content requires an active subscription.
+      if (isSubscription) {
+        final subscriptionResponse =
+            await ContentService.verifySubscription();
+
+        if (!mounted) return;
+
+        final hasSubscription = subscriptionResponse.statusCode == 200 &&
+            subscriptionResponse.data is Map &&
+            subscriptionResponse.data['success'] == true;
+
+        if (!hasSubscription) {
+          Navigator.of(context, rootNavigator: true).push(
+            MaterialPageRoute(
+              builder: (_) => const SubscriptionScreen(),
+            ),
+          );
+          return;
+        }
+      }
+
+      // Free content, purchased premium content and subscribed content
+      // continue to playback.
+      var streamUrl = (content['video'] ??
                   content['video_url'] ??
                   content['stream_url'] ??
                   content['url'])
@@ -382,23 +453,23 @@ class _HomeScreenState extends State<HomeScreen> {
           '';
 
       int? episodeId;
-      var playerTitle = content['name']?.toString() ?? video.title;
+      var playerTitle = title;
 
-      // Step 3: For series, select the first available episode.
-      if (streamUrl.isEmpty && video.isSeries && content['episodes'] is List) {
+      // For series, select the first available episode in season/episode order.
+      if (streamUrl.isEmpty &&
+          video.isSeries &&
+          content['episodes'] is List) {
         final episodes = (content['episodes'] as List)
             .whereType<Map>()
             .map((episode) => Map<String, dynamic>.from(episode))
             .where((episode) {
-              final url =
-                  (episode['video'] ??
+              final url = (episode['video'] ??
                           episode['video_url'] ??
                           episode['stream_url'] ??
                           episode['url'])
                       ?.toString()
                       .trim() ??
                   '';
-
               return url.isNotEmpty;
             })
             .toList();
@@ -408,16 +479,13 @@ class _HomeScreenState extends State<HomeScreen> {
             : int.tryParse(value?.toString() ?? '') ?? 0;
 
         episodes.sort((a, b) {
-          final seasonCompare = number(
-            a['season'],
-          ).compareTo(number(b['season']));
-
+          final seasonCompare =
+              number(a['season']).compareTo(number(b['season']));
           if (seasonCompare != 0) return seasonCompare;
 
           final episodeCompare = number(
             a['episode_number'] ?? a['episode'],
           ).compareTo(number(b['episode_number'] ?? b['episode']));
-
           if (episodeCompare != 0) return episodeCompare;
 
           return number(a['id']).compareTo(number(b['id']));
@@ -426,19 +494,19 @@ class _HomeScreenState extends State<HomeScreen> {
         if (episodes.isNotEmpty) {
           final episode = episodes.first;
 
-          streamUrl =
-              (episode['video'] ??
+          streamUrl = (episode['video'] ??
                       episode['video_url'] ??
                       episode['stream_url'] ??
                       episode['url'])
                   .toString()
                   .trim();
 
-          episodeId = number(episode['id']) > 0 ? number(episode['id']) : null;
+          final parsedEpisodeId = number(episode['id']);
+          episodeId = parsedEpisodeId > 0 ? parsedEpisodeId : null;
 
           playerTitle = episode['name']?.toString().trim().isNotEmpty == true
               ? episode['name'].toString()
-              : video.title;
+              : title;
         }
       }
 
@@ -447,10 +515,11 @@ class _HomeScreenState extends State<HomeScreen> {
         return;
       }
 
-      // Step 4: Request the signed URL.
-      final streamResponse = await ApiService.post('/api/v1/app/stream', {
-        'url': streamUrl,
-      });
+      // Request a signed stream URL from the backend.
+      final streamResponse = await ApiService.post(
+        '/api/v1/app/stream',
+        {'url': streamUrl},
+      );
 
       if (!mounted) return;
 
@@ -471,7 +540,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
       debugPrint('SIGNED STREAM URL RECEIVED');
 
-      // Step 5: Open the player using the signed URL.
       Navigator.of(context, rootNavigator: true).push(
         MaterialPageRoute(
           builder: (_) => PlayerScreen(

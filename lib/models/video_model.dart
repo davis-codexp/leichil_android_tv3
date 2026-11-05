@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class VideoModel {
   final String id;
   final String title;
@@ -8,6 +6,7 @@ class VideoModel {
   final String year;
   final String duration;
   final String category;
+  final String contentCategory;
   final String language;
 
   final double rating;
@@ -24,6 +23,7 @@ class VideoModel {
   final bool featured;
   final bool trending;
   final bool continueWatching;
+  final bool isPremium;
 
   final double progress;
 
@@ -37,6 +37,7 @@ class VideoModel {
     required this.year,
     this.duration = "",
     required this.category,
+    this.contentCategory = "",
     this.language = "English",
     this.rating = 0,
     required this.thumbnail,
@@ -49,6 +50,7 @@ class VideoModel {
     this.featured = false,
     this.trending = false,
     this.continueWatching = false,
+    this.isPremium = false,
     this.progress = 0,
     this.isSeries = false,
     this.seasons = const [],
@@ -63,6 +65,7 @@ class VideoModel {
     String? year,
     String? duration,
     String? category,
+    String? contentCategory,
     String? language,
     double? rating,
     String? thumbnail,
@@ -75,6 +78,7 @@ class VideoModel {
     bool? featured,
     bool? trending,
     bool? continueWatching,
+    bool? isPremium,
     double? progress,
     bool? isSeries,
     List<Season>? seasons,
@@ -86,6 +90,7 @@ class VideoModel {
       year: year ?? this.year,
       duration: duration ?? this.duration,
       category: category ?? this.category,
+      contentCategory: contentCategory ?? this.contentCategory,
       language: language ?? this.language,
       rating: rating ?? this.rating,
       thumbnail: thumbnail ?? this.thumbnail,
@@ -98,15 +103,22 @@ class VideoModel {
       featured: featured ?? this.featured,
       trending: trending ?? this.trending,
       continueWatching: continueWatching ?? this.continueWatching,
+      isPremium: isPremium ?? this.isPremium,
       progress: progress ?? this.progress,
       isSeries: isSeries ?? this.isSeries,
       seasons: seasons ?? this.seasons,
     );
   }
 
+  static bool _isTrue(dynamic value) {
+    if (value == true || value == 1) return true;
+
+    final text = value?.toString().trim().toLowerCase() ?? '';
+
+    return text == 'true' || text == '1' || text == 'yes';
+  }
+
   factory VideoModel.fromJson(Map<String, dynamic> json) {
-    debugPrint('TV THUMBNAIL VALUE: ${json["tv_thumbnail"]}');
-    debugPrint('AVAILABLE KEYS: ${json.keys.toList()}');
     return VideoModel(
       id: json["id"]?.toString() ?? "",
       title: json["title"] ?? "",
@@ -114,6 +126,8 @@ class VideoModel {
       year: json["year"]?.toString() ?? "",
       duration: json["duration"]?.toString() ?? "",
       category: json["category"] ?? "",
+      contentCategory:
+          (json["content_category"] ?? json["category"] ?? "").toString(),
       language: json["language"] ?? "",
       rating: (json["rating"] ?? 0).toDouble(),
 
@@ -126,12 +140,15 @@ class VideoModel {
       cast: List<String>.from(json["cast"] ?? []),
       directors: List<String>.from(json["directors"] ?? []),
 
-      featured: json["featured"] ?? false,
-      trending: json["trending"] ?? false,
-      continueWatching: json["continueWatching"] ?? false,
+      featured: _isTrue(json["featured"]),
+      trending: _isTrue(json["trending"]),
+      continueWatching: _isTrue(json["continueWatching"]),
+
+      isPremium: _isTrue(json["is_premium"] ?? json["isPremium"]),
+
       progress: (json["progress"] ?? 0).toDouble(),
 
-      isSeries: json["isSeries"] ?? false,
+      isSeries: _isTrue(json["isSeries"]),
       seasons: (json["seasons"] as List<dynamic>?)
               ?.map((e) => Season.fromJson(e))
               .toList() ??
@@ -147,6 +164,7 @@ class VideoModel {
       "year": year,
       "duration": duration,
       "category": category,
+      "content_category": contentCategory,
       "language": language,
       "rating": rating,
       "thumbnail": thumbnail,
@@ -159,6 +177,7 @@ class VideoModel {
       "featured": featured,
       "trending": trending,
       "continueWatching": continueWatching,
+      "is_premium": isPremium,
       "progress": progress,
       "isSeries": isSeries,
       "seasons": seasons.map((e) => e.toJson()).toList(),

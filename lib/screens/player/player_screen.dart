@@ -30,7 +30,6 @@ class _PlayerScreenState extends State<PlayerScreen> {
   Timer? _controlsTimer;
   Timer? _seekTimer;
   Timer? _nextEpisodeCountdownTimer;
-
   List<Map<String, dynamic>> _episodes = [];
   bool _isSeries = false;
   bool _changingEpisode = false;
@@ -39,6 +38,10 @@ class _PlayerScreenState extends State<PlayerScreen> {
   bool _showNextEpisodeCountdown = false;
   bool _nextOverlayFocused = false;
   int _nextEpisodeCountdown = 5;
+  Timer? _seekCommitTimer;
+
+Duration? _pendingSeekPosition;
+Duration? _seekPreviewPosition;
 
   static const Duration _nextEpisodeThreshold = Duration(seconds: 15);
 
@@ -747,94 +750,222 @@ class _PlayerScreenState extends State<PlayerScreen> {
     });
   }
 
-  Future<void> _seekSeekerBy(Duration amount) async {
-    final controller = _controller;
+  // Future<void> _seekSeekerBy(Duration amount) async {
+  //   final controller = _controller;
 
-    if (controller == null || !controller.value.isInitialized) {
-      return;
-    }
+  //   if (controller == null || !controller.value.isInitialized) {
+  //     return;
+  //   }
 
-    final duration = controller.value.duration;
+  //   final duration = controller.value.duration;
 
-    if (duration <= Duration.zero) {
-      return;
-    }
+  //   if (duration <= Duration.zero) {
+  //     return;
+  //   }
 
-    final current = controller.value.position;
+  //   final current = controller.value.position;
 
-    var target = current + amount;
+  //   var target = current + amount;
 
-    if (target < Duration.zero) {
-      target = Duration.zero;
-    }
+  //   if (target < Duration.zero) {
+  //     target = Duration.zero;
+  //   }
 
-    if (target > duration) {
-      target = duration;
-    }
+  //   if (target > duration) {
+  //     target = duration;
+  //   }
 
-    if (!mounted) return;
+  //   if (!mounted) return;
 
-    _controlsTimer?.cancel();
+  //   _controlsTimer?.cancel();
 
-    setState(() {
-      _selectedControl = 6;
-      _isSeeking = true;
-      _showControls = true;
-    });
+  //   setState(() {
+  //     _selectedControl = 6;
+  //     _isSeeking = true;
+  //     _showControls = true;
+  //   });
 
-    try {
-      await controller.seekTo(target);
-    } catch (e) {
-      debugPrint('SEEK ERROR: $e');
-    }
+  //   try {
+  //     await controller.seekTo(target);
+  //   } catch (e) {
+  //     debugPrint('SEEK ERROR: $e');
+  //   }
 
-    if (!mounted) return;
+  //   if (!mounted) return;
 
-    setState(() {
-      _showControls = true;
-      _isSeeking = true;
-    });
+  //   setState(() {
+  
+  //     _showControls = true;
+  //     _isSeeking = true;
+  //   });
+  // }
+
+  void _seekSeekerBy(Duration amount) {
+  final controller = _controller;
+
+  if (controller == null || !controller.value.isInitialized) {
+    return;
   }
+
+  final duration = controller.value.duration;
+
+  if (duration <= Duration.zero) return;
+
+  // Use the preview position so repeated remote presses
+  // build on the latest requested position.
+  final current =
+      _pendingSeekPosition ??
+      _seekPreviewPosition ??
+      controller.value.position;
+
+  var target = current + amount;
+
+  if (target < Duration.zero) {
+    target = Duration.zero;
+  }
+
+  if (target > duration) {
+    target = duration;
+  }
+
+  _controlsTimer?.cancel();
+  _seekCommitTimer?.cancel();
+
+  if (!mounted) return;
+
+  setState(() {
+    _selectedControl = 6;
+    _isSeeking = true;
+    _showControls = true;
+
+    _pendingSeekPosition = target;
+    _seekPreviewPosition = target;
+  });
+
+  // Wait briefly after the last remote press before
+  // sending the actual seek request.
+  _seekCommitTimer = Timer(
+    const Duration(milliseconds: 180),
+    _commitPendingSeek,
+  );
+}
+
+
+Future<void> _commitPendingSeek() async {
+  final controller = _controller;
+  final target = _pendingSeekPosition;
+
+  if (controller == null ||
+      target == null ||
+      !controller.value.isInitialized) {
+    return;
+  }
+
+  _pendingSeekPosition = null;
+
+  try {
+    await controller.seekTo(target);
+  } catch (e) {
+    debugPrint('SEEK ERROR: $e');
+  }
+
+  if (!mounted) return;
+
+  setState(() {
+    _seekPreviewPosition = null;
+  });
+}
+
+  // Future<void> _seekToPosition(Duration position) async {
+  //   final controller = _controller;
+
+  //   if (controller == null || !controller.value.isInitialized) {
+  //     return;
+  //   }
+
+  //   final duration = controller.value.duration;
+
+  //   var target = position;
+
+  //   if (target < Duration.zero) {
+  //     target = Duration.zero;
+  //   }
+
+  //   if (target > duration) {
+  //     target = duration;
+  //   }
+
+  //   try {
+  //     await controller.seekTo(target);
+  //   } catch (e) {
+  //     debugPrint('SEEK ERROR: $e');
+  //   }
+
+  //   if (!mounted) return;
+
+  //   setState(() {
+  //     _isSeeking = false;
+  //     _selectedControl = 2;
+  //     _showControls = true;
+  //   });
+
+  //   _showControlsTemporarily();
+  // }
+
 
   Future<void> _seekToPosition(Duration position) async {
-    final controller = _controller;
+  final controller = _controller;
 
-    if (controller == null || !controller.value.isInitialized) {
-      return;
-    }
-
-    final duration = controller.value.duration;
-
-    var target = position;
-
-    if (target < Duration.zero) {
-      target = Duration.zero;
-    }
-
-    if (target > duration) {
-      target = duration;
-    }
-
-    try {
-      await controller.seekTo(target);
-    } catch (e) {
-      debugPrint('SEEK ERROR: $e');
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      _isSeeking = false;
-      _selectedControl = 2;
-      _showControls = true;
-    });
-
-    _showControlsTemporarily();
+  if (controller == null || !controller.value.isInitialized) {
+    return;
   }
+
+  final duration = controller.value.duration;
+
+  var target = position;
+
+  if (target < Duration.zero) {
+    target = Duration.zero;
+  }
+
+  if (target > duration) {
+    target = duration;
+  }
+
+  _seekCommitTimer?.cancel();
+
+  _pendingSeekPosition = target;
+
+  if (!mounted) return;
+
+  setState(() {
+    _seekPreviewPosition = target;
+    _isSeeking = false;
+    _selectedControl = 2;
+    _showControls = true;
+  });
+
+  await _commitPendingSeek();
+
+  if (!mounted) return;
+
+  _showControlsTemporarily();
+}
+
+  // void _exitPlayer() {
+  //   Navigator.of(context).pop();
+  // }
 
   void _exitPlayer() {
-    Navigator.of(context).pop();
+  final navigator = Navigator.of(
+    context,
+    rootNavigator: true,
+  );
+
+  if (navigator.canPop()) {
+    navigator.pop();
   }
+}
 
   String _formatDuration(Duration duration) {
     final hours = duration.inHours;
@@ -1092,8 +1223,11 @@ class _PlayerScreenState extends State<PlayerScreen> {
   }
 
   Widget _buildControlsForValue(VideoPlayerValue value) {
-    final position = value.position;
-    final duration = value.duration;
+    // final position = value.position;
+    // final duration = value.duration;
+
+    final position = _seekPreviewPosition ?? value.position;
+final duration = value.duration;
 
     double progress = 0;
 
@@ -1387,6 +1521,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
     _controlsTimer?.cancel();
     _seekTimer?.cancel();
     _nextEpisodeCountdownTimer?.cancel();
+    _seekCommitTimer?.cancel();
 
     _controller?.removeListener(_videoListener);
 

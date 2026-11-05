@@ -138,14 +138,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   static const Color _green = Color(0xFF27E58B);
   static const Color _red = Color(0xFFFF5369);
 
-  // void _goBack(BuildContext context) {
-  //   if (widget.onBack != null) {
-  //     widget.onBack!();
-  //   } else if (Navigator.of(context).canPop()) {
-  //     Navigator.of(context).pop();
-  //   }
-  // }
-
   void _showInfo(BuildContext context, String title, String message) {
     showDialog<void>(
       context: context,
@@ -206,19 +198,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // Header
                     Row(
                       children: [
-                        // TvFocusWrapper(
-                        //   style: TvFocusStyle.button,
-                        //   onPressed: () => _goBack(context),
-                        //   child: const Padding(
-                        //     padding: EdgeInsets.all(10),
-                        //     child: Icon(
-                        //       Icons.arrow_back_rounded,
-                        //       color: Colors.white,
-                        //       size: 28,
-                        //     ),
-                        //   ),
-                        // ),
-                        // const SizedBox(width: 12),
                         const Text(
                           'Leichil',
                           style: TextStyle(

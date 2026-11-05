@@ -50,10 +50,8 @@ class _TvMovieCardState extends State<TvMovieCard> {
 
   @override
   Widget build(BuildContext context) {
-    // Always use the normal thumbnail.
     final imageUrl = _imageUrl(widget.video.thumbnail);
 
-    // Fixed portrait ratio: 2:3.
     const aspectRatio = 2 / 3;
     final width = AppDimensions.posterWidth(context) * 1.15;
 
@@ -110,7 +108,19 @@ class _TvMovieCardState extends State<TvMovieCard> {
                   child: ClipRect(
                     child: AspectRatio(
                       aspectRatio: aspectRatio,
-                      child: _buildImage(imageUrl: imageUrl),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          _buildImage(imageUrl: imageUrl),
+
+                          if (widget.video.isPremium)
+                            Positioned(
+                              top: 10,
+                              left: 10,
+                              child: _buildPremiumBadge(),
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -118,6 +128,35 @@ class _TvMovieCardState extends State<TvMovieCard> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildPremiumBadge() {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 5,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE5B84B),
+        borderRadius: BorderRadius.circular(4),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.35),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: const Text(
+        'PREMIUM',
+        style: TextStyle(
+          color: Color(0xFF17130A),
+          fontSize: 10,
+          fontWeight: FontWeight.w900,
+          letterSpacing: 0.8,
+        ),
       ),
     );
   }

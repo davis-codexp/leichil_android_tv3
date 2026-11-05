@@ -21,11 +21,11 @@ class TvMovieCardLandscape extends StatefulWidget {
   final bool autofocus;
   final FocusNode? focusNode;
   final FocusOnKeyEventCallback? onKeyEvent;
-
   final bool landscape;
 
   @override
-  State<TvMovieCardLandscape> createState() => _TvMovieCardLandscapeState();
+  State<TvMovieCardLandscape> createState() =>
+      _TvMovieCardLandscapeState();
 }
 
 class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
@@ -53,7 +53,9 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
           ? widget.video.tvThumbnail
           : widget.video.thumbnail,
     );
+
     final aspectRatio = widget.landscape ? 16 / 9 : 2 / 3;
+
     final width = widget.landscape
         ? AppDimensions.posterWidth(context) * 1.65
         : AppDimensions.posterWidth(context);
@@ -91,24 +93,6 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 180),
                   curve: Curves.easeOutCubic,
-                  // decoration: BoxDecoration(
-                  //   borderRadius: BorderRadius.circular(AppDimensions.radiusM),
-                  //   border: Border.all(
-                  //     color: _isFocused ? _accent : Colors.transparent,
-                  //     width: 2.2,
-                  //   ),
-                  //   boxShadow: _isFocused
-                  //       ? [
-                  //           BoxShadow(
-                  //             color: _accent.withValues(alpha: 0.24),
-                  //             blurRadius: 20,
-                  //             spreadRadius: 1,
-                  //           ),
-                  //         ]
-                  //       : null,
-                  // ),
-                  // child: ClipRRect(
-                  //   borderRadius: BorderRadius.circular(AppDimensions.radiusM),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: _isFocused ? _accent : Colors.transparent,
@@ -127,9 +111,22 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
                   child: ClipRect(
                     child: AspectRatio(
                       aspectRatio: aspectRatio,
-                      child: _buildImage(
-                        imageUrl: imageUrl,
-                        aspectRatio: aspectRatio,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          _buildImage(
+                            imageUrl: imageUrl,
+                            aspectRatio: aspectRatio,
+                          ),
+
+                          // PREMIUM BADGE
+                          if (widget.video.isPremium)
+                            Positioned(
+                              top: 10,
+                              left: 10,
+                              child: _buildPremiumBadge(),
+                            ),
+                        ],
                       ),
                     ),
                   ),
@@ -142,7 +139,39 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
     );
   }
 
-  Widget _buildImage({required String imageUrl, required double aspectRatio}) {
+  Widget _buildPremiumBadge() {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 5,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE5B84B),
+        borderRadius: BorderRadius.circular(4),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.35),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: const Text(
+        'PREMIUM',
+        style: TextStyle(
+          color: Color(0xFF17130A),
+          fontSize: 10,
+          fontWeight: FontWeight.w900,
+          letterSpacing: 0.8,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImage({
+    required String imageUrl,
+    required double aspectRatio,
+  }) {
     if (imageUrl.isEmpty) {
       return _buildPlaceholder();
     }
@@ -165,7 +194,10 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
           child: const SizedBox(
             width: 28,
             height: 28,
-            child: CircularProgressIndicator(strokeWidth: 2, color: _accent),
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: _accent,
+            ),
           ),
         );
       },

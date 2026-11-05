@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import '../../widgets/navigation/tv_focus_style.dart';
 import '../../widgets/navigation/tv_focus_wrapper.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
 import '../view_all/view_all_screen.dart';
+
+class _ShellNavigatorObserver extends NavigatorObserver {
+  final VoidCallback onReturnedToHome;
+
+  _ShellNavigatorObserver({required this.onReturnedToHome});
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    super.didPop(route, previousRoute);
+
+    if (previousRoute?.settings.name == '/') {
+      onReturnedToHome();
+    }
+  }
+}
 
 class MainShell extends StatefulWidget {
   const MainShell({super.key});
@@ -39,13 +53,32 @@ class _MainShellState extends State<MainShell> {
   final FocusNode _pageEntryFocus = FocusNode(debugLabel: 'ShellPageEntry');
 
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
   final FocusNode _homeEntryFocus = FocusNode(debugLabel: 'ShellHomeEntry');
+
   late final List<FocusNode> _menuFocusNodes = List.generate(
     _labels.length,
     (index) => FocusNode(debugLabel: 'ShellMenu$index'),
   );
 
+  late final _ShellNavigatorObserver _navigatorObserver =
+      _ShellNavigatorObserver(
+        onReturnedToHome: () {
+          if (!mounted) return;
+
+          setState(() => _selectedIndex = 0);
+
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) {
+              _homeEntryFocus.requestFocus();
+            }
+          });
+        },
+      );
+
   int _selectedIndex = 0;
+
+  bool _showingExitDialog = false;
 
   @override
   void dispose() {
@@ -67,14 +100,19 @@ class _MainShellState extends State<MainShell> {
     if (index < 0 || index >= _labels.length) return;
 
     setState(() => _selectedIndex = index);
+
     final navigator = _navigatorKey.currentState;
     if (navigator == null) return;
 
     if (index == 0) {
       navigator.popUntil((route) => route.isFirst);
+
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _homeEntryFocus.requestFocus();
+        if (mounted) {
+          _homeEntryFocus.requestFocus();
+        }
       });
+
       return;
     }
 
@@ -89,8 +127,108 @@ class _MainShellState extends State<MainShell> {
     navigator.pushNamedAndRemoveUntil(routeName, (route) => route.isFirst);
   }
 
+  void _handleBack() {
+    if (_showingExitDialog) return;
+
+    final rootNavigator = Navigator.of(context, rootNavigator: true);
+
+    if (rootNavigator.canPop()) {
+      rootNavigator.pop();
+      return;
+    }
+
+    // 2. Then close routes inside MainShell's nested Navigator.
+    //    This handles DetailScreen and other pushed pages.
+    final navigator = _navigatorKey.currentState;
+
+    if (navigator == null) return;
+
+    if (navigator.canPop()) {
+      navigator.pop();
+      return;
+    }
+
+    // 3. Return to Home from another main section.
+    if (_selectedIndex != 0) {
+      _selectSection(0);
+      return;
+    }
+
+    // 4. Show exit confirmation only when already on Home.
+    _showExitConfirmation();
+  }
+
+  Future<void> _showExitConfirmation() async {
+    if (_showingExitDialog || !mounted) return;
+
+    _showingExitDialog = true;
+
+    final shouldExit = await showDialog<bool>(
+      context: context,
+      barrierDismissible: true,
+      builder: (dialogContext) {
+        return AlertDialog(
+          backgroundColor: const Color(0xFF171717),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+          title: const Text(
+            'Exit Leichil TV?',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          content: const Text(
+            'Are you sure you want to exit the app?',
+            style: TextStyle(color: Colors.white70, fontSize: 15),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(false);
+              },
+              child: const Text(
+                'CANCEL',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(true);
+              },
+              child: const Text(
+                'EXIT',
+                style: TextStyle(color: _accent, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+
+    _showingExitDialog = false;
+
+    if (!mounted) return;
+
+    if (shouldExit == true) {
+      SystemNavigator.pop();
+    } else {
+      _homeEntryFocus.requestFocus();
+    }
+  }
+
+  // ------------------------------------------------------------
+  // SIDEBAR NAVIGATION
+  // ------------------------------------------------------------
+
   KeyEventResult _handleMenuKeys(int index, KeyEvent event) {
     final key = event.logicalKey;
+
     final isDirectionKey =
         key == LogicalKeyboardKey.arrowLeft ||
         key == LogicalKeyboardKey.arrowRight ||
@@ -98,12 +236,16 @@ class _MainShellState extends State<MainShell> {
         key == LogicalKeyboardKey.arrowDown;
 
     if (!isDirectionKey) return KeyEventResult.ignored;
+
     if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
       return KeyEventResult.handled;
     }
 
     if (key == LogicalKeyboardKey.arrowUp) {
-      if (index > 0) _menuFocusNodes[index - 1].requestFocus();
+      if (index > 0) {
+        _menuFocusNodes[index - 1].requestFocus();
+      }
+
       return KeyEventResult.handled;
     }
 
@@ -111,11 +253,23 @@ class _MainShellState extends State<MainShell> {
       if (index < _menuFocusNodes.length - 1) {
         _menuFocusNodes[index + 1].requestFocus();
       }
+
       return KeyEventResult.handled;
     }
 
+    // // if (key == LogicalKeyboardKey.arrowRight) {
+    // //   if (index == 0) {
+    // //     _homeEntryFocus.requestFocus();
+    // //   } else {
+    // //     _pageEntryFocus.requestFocus();
+    // //   }
+
+    // //   return KeyEventResult.handled;
+    // }
+
     if (key == LogicalKeyboardKey.arrowRight) {
-      if (index == 0) {
+      // Use the currently displayed page, not the focused sidebar item.
+      if (_selectedIndex == 0) {
         _homeEntryFocus.requestFocus();
       } else {
         _pageEntryFocus.requestFocus();
@@ -153,6 +307,7 @@ class _MainShellState extends State<MainShell> {
           ),
           ...List.generate(_labels.length, (index) {
             final selected = _selectedIndex == index;
+
             return Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: TvFocusWrapper(
@@ -209,6 +364,10 @@ class _MainShellState extends State<MainShell> {
     );
   }
 
+  // ------------------------------------------------------------
+  // ROUTES
+  // ------------------------------------------------------------
+
   Route<dynamic> _onGenerateRoute(RouteSettings settings) {
     late final Widget page;
 
@@ -257,39 +416,52 @@ class _MainShellState extends State<MainShell> {
     return MaterialPageRoute<dynamic>(builder: (_) => page, settings: settings);
   }
 
+  // ------------------------------------------------------------
+  // BUILD
+  // ------------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: _background,
-      body: SafeArea(
-        top: false,
-        bottom: false,
-        child: Row(
-          children: [
-            _buildSidebar(),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) return;
 
-            Expanded(
-              child: Focus(
-                onKeyEvent: (node, event) {
-                  if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+        _handleBack();
+      },
+      child: Scaffold(
+        backgroundColor: _background,
+        body: SafeArea(
+          top: false,
+          bottom: false,
+          child: Row(
+            children: [
+              _buildSidebar(),
+
+              Expanded(
+                child: Focus(
+                  onKeyEvent: (node, event) {
+                    if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+                      return KeyEventResult.ignored;
+                    }
+
+                    if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+                      _focusSelectedMenu();
+                      return KeyEventResult.handled;
+                    }
+
                     return KeyEventResult.ignored;
-                  }
-
-                  if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-                    _focusSelectedMenu();
-                    return KeyEventResult.handled;
-                  }
-
-                  return KeyEventResult.ignored;
-                },
-                child: Navigator(
-                  key: _navigatorKey,
-                  initialRoute: '/',
-                  onGenerateRoute: _onGenerateRoute,
+                  },
+                  child: Navigator(
+                    key: _navigatorKey,
+                    observers: [_navigatorObserver],
+                    initialRoute: '/',
+                    onGenerateRoute: _onGenerateRoute,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -8,9 +8,6 @@ import '../../widgets/navigation/tv_focus_wrapper.dart';
 import '../details/detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
-  // const SearchScreen({super.key, this.onBack, this.onVideoSelected});
-  // final VoidCallback? onBack;
-  // final ValueChanged<VideoModel>? onVideoSelected;
 
   const SearchScreen({
     super.key,
@@ -241,33 +238,16 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _applyFilter() {
-    final allVideos = _allVideos;
-
     final query = _query.trim().toLowerCase();
 
     if (query.isEmpty) {
-      _filteredVideos = List<VideoModel>.from(allVideos);
-
+      _filteredVideos = List<VideoModel>.from(_allVideos);
       return;
     }
 
-    _filteredVideos = allVideos.where((video) {
-      final title = video.title.toLowerCase();
-
-      final category = video.category.toLowerCase();
-
-      final year = video.year.toLowerCase();
-
-      final genres = video.genres.join(' ').toLowerCase();
-
-      final type = video.isSeries ? 'series' : 'movie';
-
-      return title.contains(query) ||
-          category.contains(query) ||
-          year.contains(query) ||
-          genres.contains(query) ||
-          type.contains(query);
-    }).toList();
+    _filteredVideos = _allVideos.where((video) {
+      return video.title.toLowerCase().contains(query);
+    }).toList(growable: false);
   }
 
   void _onSearchChanged(String value) {
@@ -421,7 +401,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 cursorColor: AppColors.textPrimary,
                 decoration: const InputDecoration(
-                  hintText: 'Search titles, genres, years…',
+                  hintText: 'Search movie or series name…',
                   hintStyle: TextStyle(color: AppColors.textMuted),
                   prefixIcon: Icon(
                     Icons.search_rounded,
@@ -429,7 +409,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(
-                    vertical: 16,
+                    vertical: 10,
                     horizontal: 12,
                   ),
                 ),
@@ -481,8 +461,8 @@ class _SearchScreenState extends State<SearchScreen> {
             return KeyEventResult.ignored;
           },
           child: Container(
-            height: 54,
-            padding: const EdgeInsets.symmetric(horizontal: 18),
+            height: 46,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: _query.isEmpty
@@ -668,7 +648,7 @@ class _SearchScreenState extends State<SearchScreen> {
       onPressed: () => _pressKeyboardKey(label),
       onKeyEvent: (node, event) => _handleKeyboardNavigation(nodeIndex, event),
       child: Container(
-        height: wide ? 42 : 42,
+        height: wide ? 36 : 36,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: accent ? const Color(0xFF2D4262) : const Color(0xFF172C58),
@@ -689,7 +669,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 label,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -700,7 +680,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget _buildOnScreenKeyboard() {
     var index = 0;
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: const Color(0x66101B30),
         borderRadius: BorderRadius.circular(16),
@@ -710,30 +690,30 @@ class _SearchScreenState extends State<SearchScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _buildSearchField(),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           for (final row in _keyboardRows) ...[
             Row(
               children: [
                 for (final key in row) ...[
                   Expanded(child: _buildKeyboardKey(key, index++)),
-                  if (key != row.last) const SizedBox(width: 5),
+                  if (key != row.last) const SizedBox(width: 4),
                 ],
               ],
             ),
-            const SizedBox(height: 6),
+            const SizedBox(height: 4),
           ],
           Row(
             children: [
               Expanded(child: _buildKeyboardKey('SPACE', index++, wide: true)),
-              const SizedBox(width: 6),
+              const SizedBox(width: 5),
               Expanded(child: _buildKeyboardKey('⌫', index++)),
-              const SizedBox(width: 6),
+              const SizedBox(width: 5),
               Expanded(
                 child: _buildKeyboardKey('CLEAR', index++, accent: true),
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 6),
           const Text(
             'Use your remote to select a key',
             textAlign: TextAlign.center,
@@ -746,130 +726,48 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _buildMovieCard(VideoModel video, int index) {
     final imageUrl = _thumbnailUrl(video.thumbnail);
-    final year = video.year.trim();
-    final genre = video.category.trim();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TvFocusWrapper(
-          key: ValueKey(
-            'search-${video.isSeries ? 'series' : 'movie'}-${video.id}',
-          ),
-          focusNode: index == 0 ? _firstCardFocusNode : null,
-          style: TvFocusStyle.card,
-          onPressed: () => _openVideo(video),
-          child: AspectRatio(
-            aspectRatio: 2 / 3,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                TvFocusStyle.card.borderRadius,
+    return TvFocusWrapper(
+      key: ValueKey(
+        'search-${video.isSeries ? 'series' : 'movie'}-${video.id}',
+      ),
+      focusNode: index == 0 ? _firstCardFocusNode : null,
+      style: TvFocusStyle.card,
+      focusBorderRadius: 0,
+      onPressed: () => _openVideo(video),
+      child: AspectRatio(
+        aspectRatio: 2 / 3,
+        child: ClipRect(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Container(
+                color: AppColors.surface,
+                alignment: Alignment.center,
+                child: const Icon(
+                  Icons.movie_outlined,
+                  size: 42,
+                  color: AppColors.textMuted,
+                ),
               ),
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Container(
+              if (imageUrl.isNotEmpty)
+                Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, _, _) => Container(
                     color: AppColors.surface,
                     alignment: Alignment.center,
                     child: const Icon(
-                      Icons.movie_outlined,
-                      size: 42,
+                      Icons.broken_image_outlined,
+                      size: 36,
                       color: AppColors.textMuted,
                     ),
                   ),
-                  if (imageUrl.isNotEmpty)
-                    Image.network(
-                      imageUrl,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, _, _) => Container(
-                        color: AppColors.surface,
-                        alignment: Alignment.center,
-                        child: const Icon(
-                          Icons.broken_image_outlined,
-                          size: 36,
-                          color: AppColors.textMuted,
-                        ),
-                      ),
-                    ),
-                  // Positioned(
-                  //   top: 10,
-                  //   left: 10,
-                  //   child: Container(
-                  //     padding: const EdgeInsets.symmetric(
-                  //       horizontal: 9,
-                  //       vertical: 6,
-                  //     ),
-                  //     decoration: BoxDecoration(
-                  //       color: const Color(0xD9000000),
-                  //       borderRadius: BorderRadius.circular(6),
-                  //       border: Border.all(
-                  //         color: Colors.white.withValues(alpha: 0.12),
-                  //       ),
-                  //     ),
-                  //     child: Text(
-                  //       video.isSeries ? 'SERIES' : 'MOVIE',
-                  //       style: const TextStyle(
-                  //         color: Colors.white,
-                  //         fontSize: 9,
-                  //         fontWeight: FontWeight.w800,
-                  //         letterSpacing: 1,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    height: 76,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.black.withValues(alpha: 0.72),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                ),
+            ],
           ),
         ),
-        const SizedBox(height: 12),
-        Text(
-          video.title,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: AppColors.textPrimary,
-            fontSize: 14,
-            height: 1.25,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        if (year.isNotEmpty || genre.isNotEmpty) ...[
-          const SizedBox(height: 5),
-          Text(
-            [
-              if (year.isNotEmpty) year,
-              if (genre.isNotEmpty) genre,
-            ].join('  •  '),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: AppColors.textMuted,
-              fontSize: 11,
-              letterSpacing: 0.1,
-            ),
-          ),
-        ],
-      ],
+      ),
     );
   }
 
@@ -1099,45 +997,30 @@ class _SearchScreenState extends State<SearchScreen> {
                           compact ? 14 : 30,
                           22,
                         ),
-                        child: 
-                        // compact
-                        //     ? Column(
-                        //         children: [
-                        //           _buildOnScreenKeyboard(),
-                        //           const SizedBox(height: 14),
-                        //           Expanded(child: _buildResults(constraints)),
-                        //         ],
-                        //       )
-
-                        compact
-    ? Column(
-        children: [
-          SizedBox(
-            height: (constraints.maxHeight * 0.52)
-                .clamp(220.0, 430.0)
-                .toDouble(),
-            child: SingleChildScrollView(
-              child: _buildOnScreenKeyboard(),
-            ),
-          ),
-          const SizedBox(height: 14),
-          Expanded(child: _buildResults(constraints)),
-        ],
-      )
+                        child: compact
+                            ? Column(
+                                children: [
+                                  SizedBox(
+                                    height: (constraints.maxHeight * 0.44)
+                                        .clamp(180.0, 350.0)
+                                        .toDouble(),
+                                    child: SingleChildScrollView(
+                                      child: _buildOnScreenKeyboard(),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Expanded(child: _buildResults(constraints)),
+                                ],
+                              )
                             : Row(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  // SizedBox(
-                                  //   width: constraints.maxWidth * 0.29,
-                                  //   child: _buildOnScreenKeyboard(),
-                                  // ),
-
                                   SizedBox(
-  width: constraints.maxWidth * 0.29,
-  child: SingleChildScrollView(
-    child: _buildOnScreenKeyboard(),
-  ),
-),
+                                    width: constraints.maxWidth * 0.29,
+                                    child: SingleChildScrollView(
+                                      child: _buildOnScreenKeyboard(),
+                                    ),
+                                  ),
                                   const SizedBox(width: 24),
                                   Expanded(
                                     child: Column(

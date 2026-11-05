@@ -271,11 +271,6 @@ class _OtpScreenState extends State<OtpScreen> {
                 result['mobile']?.toString().trim() ?? widget.mobile;
             final authToken = result['token']?.toString() ?? '';
 
-            // Do not convert a missing name into the literal string "null".
-            // Check the response keys in the debug console if the name is blank.
-            debugPrint('OTP VERIFY RESULT KEYS: ${result.keys.toList()}');
-            debugPrint('OTP VERIFY NAME PRESENT: ${userName.isNotEmpty}');
-
             if (userId.isEmpty || authToken.isEmpty) {
               if (!mounted) return;
 
@@ -296,7 +291,7 @@ class _OtpScreenState extends State<OtpScreen> {
               token: authToken,
             );
           } catch (error) {
-            debugPrint('AUTH STORAGE ERROR: $error');
+            // debugPrint('AUTH STORAGE ERROR: $error');
 
             if (!mounted) return;
 
@@ -404,6 +399,7 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   KeyEventResult _handleKeypadKey(FocusNode node, KeyEvent event) {
+
     if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
       return KeyEventResult.ignored;
     }
@@ -447,27 +443,38 @@ class _OtpScreenState extends State<OtpScreen> {
     return KeyEventResult.handled;
   }
 
-  KeyEventResult _handleFormKey(FocusNode node, KeyEvent event) {
-    if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
-      return KeyEventResult.ignored;
-    }
 
-    if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-      _keypadFocusNodes[0].requestFocus();
-      return KeyEventResult.handled;
-    }
-    if (event.logicalKey == LogicalKeyboardKey.arrowDown &&
-        _otpFocus.hasFocus) {
-      _verifyFocus.requestFocus();
-      return KeyEventResult.handled;
-    }
-    if (event.logicalKey == LogicalKeyboardKey.arrowUp &&
-        _verifyFocus.hasFocus) {
-      _otpFocus.requestFocus();
-      return KeyEventResult.handled;
-    }
+  KeyEventResult _handleFormKey(FocusNode node, KeyEvent event) {
+  if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
     return KeyEventResult.ignored;
   }
+
+  final key = event.logicalKey;
+
+  if (key == LogicalKeyboardKey.arrowDown && _otpFocus.hasFocus) {
+    _verifyFocus.requestFocus();
+    return KeyEventResult.handled;
+  }
+
+  if (key == LogicalKeyboardKey.arrowUp && _verifyFocus.hasFocus) {
+    _otpFocus.requestFocus();
+    return KeyEventResult.handled;
+  }
+
+  if (_verifyFocus.hasFocus &&
+      (key == LogicalKeyboardKey.arrowDown ||
+          key == LogicalKeyboardKey.arrowLeft ||
+          key == LogicalKeyboardKey.arrowRight)) {
+    return KeyEventResult.handled;
+  }
+
+  if (key == LogicalKeyboardKey.arrowRight && _otpFocus.hasFocus) {
+    _keypadFocusNodes[0].requestFocus();
+    return KeyEventResult.handled;
+  }
+
+  return KeyEventResult.ignored;
+}
 
   Widget _buildKeypadButton({
     required String label,
@@ -578,32 +585,6 @@ class _OtpScreenState extends State<OtpScreen> {
       ),
     );
   }
-
-  // Widget _buildBrand() {
-  //   return Column(
-  //     mainAxisSize: MainAxisSize.min,
-
-  //     children: [
-  //       Image.asset(
-  //         'assets/images/leichil_logo.webp',
-
-  //         height: 62,
-
-  //         fit: BoxFit.contain,
-  //       ),
-
-  //       const SizedBox(height: 8),
-
-  //       Image.asset(
-  //         'assets/images/leichil_logo_text.webp',
-
-  //         height: 28,
-
-  //         fit: BoxFit.contain,
-  //       ),
-  //     ],
-  //   );
-  // }
 
   Widget _buildOtpField() {
     return Column(

@@ -356,24 +356,96 @@ class _DetailScreenState extends State<DetailScreen> {
     return int.tryParse(value?.toString() ?? '') ?? 0;
   }
 
+  String get _contentCategory {
+    return (_content?['category'] ?? '').toString().trim().toUpperCase();
+  }
+
+  bool get _isPremiumContent =>
+      _contentCategory == 'PREMIUM' || _contentCategory == 'SHARED';
+
+  bool get _isSubscriptionContent => _contentCategory == 'SUBSCRIPTION';
+
+  Future<bool> _verifyContentAccess() async {
+    try {
+      if (!_isPremiumContent && !_isSubscriptionContent) {
+        return true;
+      }
+
+      final endpoint = _isPremiumContent
+          ? '/api/v1/app/orders/purchases/$_contentId'
+          : '/api/v1/app/subscriptions/verify';
+
+      final response = await ApiService.get(endpoint);
+
+      debugPrint('CONTENT CATEGORY: $_contentCategory');
+      debugPrint('ACCESS ENDPOINT: $endpoint');
+      debugPrint('ACCESS RESPONSE: ${response.data}');
+
+      return response.statusCode == 200 &&
+          response.data is Map &&
+          response.data['success'] == true;
+    } catch (e, stackTrace) {
+      debugPrint('Content access verification error: $e');
+      debugPrintStack(stackTrace: stackTrace);
+      return false;
+    }
+  }
+
+  void _openPaymentScreen({String? episodeTitle}) {
+    final title = episodeTitle ?? _content?['name']?.toString() ?? 'Movie';
+    final streamUrl = _content?['video']?.toString() ?? '';
+
+    if (_isPremiumContent) {
+      Navigator.of(context, rootNavigator: true).pushNamed(
+        '/checkout',
+        arguments: <String, dynamic>{
+          'contentId': _contentId,
+          'title': title,
+          'posterUrl': _imageUrl(_content?['thumbnail']),
+          'price':
+              (_content?['price'] as num?)?.toInt() ??
+              int.tryParse(_content?['price']?.toString() ?? '') ??
+              0,
+          'streamUrl': streamUrl,
+        },
+      );
+      return;
+    }
+
+    if (_isSubscriptionContent) {
+      Navigator.of(context, rootNavigator: true).pushNamed(
+        '/subscription',
+        arguments: <String, dynamic>{
+          'contentId': _contentId,
+          'title': title,
+          'currentPlan': '',
+          'expiryDate': '',
+          'streamUrl': streamUrl,
+        },
+      );
+      return;
+    }
+
+    _showMessage('Unable to verify access. Please try again.');
+  }
+
   Future<void> _play() async {
-    final response = await ContentService.verifySubscription();
+    try {
+      final hasAccess = await _verifyContentAccess();
+      if (!mounted) return;
 
-    if (!mounted) return;
+      if (!hasAccess) {
+        _openPaymentScreen();
+        return;
+      }
 
-    if (response.statusCode == 200 &&
-        response.data is Map &&
-        response.data['success'] == true) {
       final streamUrl = _content?['video']?.toString().trim() ?? '';
-
       if (streamUrl.isEmpty) {
         _showMessage('Video is not available.');
         return;
       }
 
-      // Generate signed URL
       final signedUrl = await _getSignedStreamUrl(streamUrl);
-
       if (!mounted) return;
 
       if (signedUrl == null) {
@@ -381,8 +453,7 @@ class _DetailScreenState extends State<DetailScreen> {
         return;
       }
 
-      Navigator.push(
-        context,
+      Navigator.of(context, rootNavigator: true).push(
         MaterialPageRoute(
           builder: (_) => PlayerScreen(
             streamUrl: signedUrl,
@@ -391,51 +462,63 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       );
-
-      return;
+    } catch (e, stackTrace) {
+      debugPrint('Playback error: $e');
+      debugPrintStack(stackTrace: stackTrace);
+      if (mounted) _showMessage('Unable to play this content.');
     }
-
-    _showMessage('Subscription is required to play this content.');
   }
 
   Future<void> _playEpisode(Map<String, dynamic> episode) async {
-    final streamUrl =
-        (episode['video'] ??
-                episode['video_url'] ??
-                episode['stream_url'] ??
-                episode['url'])
-            ?.toString()
-            .trim() ??
-        '';
+    try {
+      // A series uses its parent content category for entitlement verification.
+      final hasAccess = await _verifyContentAccess();
+      if (!mounted) return;
 
-    if (streamUrl.isEmpty) {
-      _showMessage('Episode video is not available.');
-      return;
-    }
+      if (!hasAccess) {
+        _openPaymentScreen(episodeTitle: episode['name']?.toString());
+        return;
+      }
 
-    // Generate signed URL
-    final signedUrl = await _getSignedStreamUrl(streamUrl);
+      final streamUrl =
+          (episode['video'] ??
+                  episode['video_url'] ??
+                  episode['stream_url'] ??
+                  episode['url'])
+              ?.toString()
+              .trim() ??
+          '';
 
-    if (!mounted) return;
+      if (streamUrl.isEmpty) {
+        _showMessage('Episode video is not available.');
+        return;
+      }
 
-    if (signedUrl == null) {
-      _showMessage('Unable to generate episode URL.');
-      return;
-    }
+      final signedUrl = await _getSignedStreamUrl(streamUrl);
+      if (!mounted) return;
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => PlayerScreen(
-          streamUrl: signedUrl,
-          title:
-              episode['name']?.toString() ??
-              _content?['name']?.toString() ??
-              '',
-          contentId: _contentId,
+      if (signedUrl == null) {
+        _showMessage('Unable to generate episode URL.');
+        return;
+      }
+
+      Navigator.of(context, rootNavigator: true).push(
+        MaterialPageRoute(
+          builder: (_) => PlayerScreen(
+            streamUrl: signedUrl,
+            title:
+                episode['name']?.toString() ??
+                _content?['name']?.toString() ??
+                '',
+            contentId: _contentId,
+          ),
         ),
-      ),
-    );
+      );
+    } catch (e, stackTrace) {
+      debugPrint('Episode playback error: $e');
+      debugPrintStack(stackTrace: stackTrace);
+      if (mounted) _showMessage('Unable to play this episode.');
+    }
   }
 
   Future<String?> _getSignedStreamUrl(String streamUrl) async {
@@ -454,7 +537,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
       return signedUrl.isEmpty ? null : signedUrl;
     } catch (e) {
-      debugPrint('Signed URL error: $e');
+      // debugPrint('Signed URL error: $e');
       return null;
     }
   }
@@ -607,27 +690,6 @@ class _DetailScreenState extends State<DetailScreen> {
           else
             const ColoredBox(color: Color.fromARGB(255, 0, 0, 0)),
 
-          // Keep the artwork visible on the right while protecting text contrast.
-          // const DecoratedBox(
-          //   decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //       begin: Alignment.centerLeft,
-
-          //       end: Alignment.centerRight,
-
-          //       stops: [0.0, 0.38, 0.72, 1.0],
-          //       colors: [
-          //         Color.fromARGB(84, 0, 0, 0),
-
-          //         Color.fromARGB(33, 2, 2, 3),
-
-          //         Color.fromARGB(7, 4, 4, 5),
-
-          //         Colors.transparent,
-          //       ],
-          //     ),
-          //   ),
-          // ),
           const DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(

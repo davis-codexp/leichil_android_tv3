@@ -164,39 +164,60 @@ class _ViewAllScreenState extends State<ViewAllScreen> {
     }
   }
 
+
   VideoModel _toVideoModel(Map<String, dynamic> item) {
-    final genre = (item['genre'] ?? '').toString();
+  final genre = (item['genre'] ?? '').toString();
 
-    final genres = genre
-        .split(',')
-        .map((value) => value.trim())
-        .where((value) => value.isNotEmpty)
-        .toList();
+  final genres = genre
+      .split(',')
+      .map((value) => value.trim())
+      .where((value) => value.isNotEmpty)
+      .toList();
 
-    return VideoModel(
-      id: (item['id'] ?? item['content_id'] ?? '').toString(),
-      title: (item['name'] ?? item['title'] ?? 'Untitled').toString(),
-      description: (item['synopsis'] ?? item['description'] ?? '').toString(),
-      year: (item['release_year'] ?? item['year'] ?? '').toString(),
-      duration: (item['runtime'] ?? item['duration'] ?? '').toString(),
-      category: genre,
-      language: (item['language'] ?? 'Manipuri').toString(),
-      rating: item['rating'] is num
-          ? (item['rating'] as num).toDouble()
-          : double.tryParse(item['rating']?.toString() ?? '') ?? 0.0,
+  final contentCategory = (
+    item['content_category'] ??
+    item['category'] ??
+    ''
+  ).toString().trim().toUpperCase();
 
-      thumbnail: (item['thumbnail'] ?? '').toString(),
-      tvThumbnail: (item['tv_thumbnail'] ?? '').toString(),
-      banner:
-          (item['banner'] ?? item['tv_thumbnail'] ?? item['thumbnail'] ?? '')
-              .toString(),
-      titleImage: (item['title_image'] ?? '').toString(),
+  final premiumValue = item['is_premium'] ?? item['isPremium'];
 
-      genres: genres,
-      isSeries:
-          item['content_type']?.toString().trim().toUpperCase() == 'SERIES',
-    );
-  }
+  final isPremium =
+      premiumValue == true ||
+      premiumValue == 1 ||
+      premiumValue?.toString().toLowerCase() == 'true' ||
+      premiumValue?.toString() == '1' ||
+      contentCategory == 'PREMIUM' ||
+      contentCategory == 'SHARED';
+
+
+  return VideoModel(
+    id: (item['id'] ?? item['content_id'] ?? '').toString(),
+    title: (item['name'] ?? item['title'] ?? 'Untitled').toString(),
+    description: (item['synopsis'] ?? item['description'] ?? '').toString(),
+    year: (item['release_year'] ?? item['year'] ?? '').toString(),
+    duration: (item['runtime'] ?? item['duration'] ?? '').toString(),
+    category: genre,
+    contentCategory: contentCategory,
+    isPremium: isPremium,
+    language: (item['language'] ?? 'Manipuri').toString(),
+    rating: item['rating'] is num
+        ? (item['rating'] as num).toDouble()
+        : double.tryParse(item['rating']?.toString() ?? '') ?? 0.0,
+    thumbnail: (item['thumbnail'] ?? '').toString(),
+    tvThumbnail: (item['tv_thumbnail'] ?? '').toString(),
+    banner: (
+      item['banner'] ??
+      item['tv_thumbnail'] ??
+      item['thumbnail'] ??
+      ''
+    ).toString(),
+    titleImage: (item['title_image'] ?? '').toString(),
+    genres: genres,
+    isSeries:
+        item['content_type']?.toString().trim().toUpperCase() == 'SERIES',
+  );
+}
 
   FocusNode _focusNodeFor(int index) {
     if (index == 0 && widget.entryFocusNode != null) {
