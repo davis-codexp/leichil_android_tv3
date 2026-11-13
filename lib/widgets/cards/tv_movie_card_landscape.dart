@@ -60,6 +60,9 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
         ? AppDimensions.posterWidth(context) * 1.65
         : AppDimensions.posterWidth(context);
 
+    final dpr = MediaQuery.devicePixelRatioOf(context);
+final imageCacheWidth = (width * dpr).round();
+
     return SizedBox(
       width: width,
       child: Builder(
@@ -115,9 +118,10 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
                         fit: StackFit.expand,
                         children: [
                           _buildImage(
-                            imageUrl: imageUrl,
-                            aspectRatio: aspectRatio,
-                          ),
+  imageUrl: imageUrl,
+  aspectRatio: aspectRatio,
+  cacheWidth: imageCacheWidth,
+),
 
                           // PREMIUM BADGE
                           if (widget.video.isPremium)
@@ -171,6 +175,7 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
   Widget _buildImage({
     required String imageUrl,
     required double aspectRatio,
+    required int cacheWidth,
   }) {
     if (imageUrl.isEmpty) {
       return _buildPlaceholder();
@@ -178,6 +183,7 @@ class _TvMovieCardLandscapeState extends State<TvMovieCardLandscape> {
 
     return Image.network(
       imageUrl,
+      cacheWidth: cacheWidth,
       width: double.infinity,
       height: double.infinity,
       fit: BoxFit.cover,

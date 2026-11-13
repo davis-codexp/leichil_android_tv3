@@ -4,6 +4,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'screens/auth/login_screen.dart';
+import 'services/auth_storage.dart';
+import 'screens/shell/main_shell.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -132,32 +134,77 @@ class _LeichilSplashScreenState extends State<LeichilSplashScreen>
     _startSplash();
   }
 
+  // Future<void> _startSplash() async {
+  //   await _controller.forward();
+
+  //   await Future.delayed(const Duration(milliseconds: 650));
+
+  //   if (!mounted) return;
+
+  //   setState(() => _leaving = true);
+
+  //   await Future.delayed(const Duration(milliseconds: 300));
+
+  //   if (!mounted) return;
+
+  //   Navigator.of(context).pushReplacement(
+  //     PageRouteBuilder(
+  //       transitionDuration: const Duration(milliseconds: 450),
+  //       pageBuilder: (_, animation, secondaryAnimation) => const LoginScreen(),
+  //       transitionsBuilder: (_, animation, secondaryAnimation, child) {
+  //         return FadeTransition(
+  //           opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
+  //           child: child,
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
+
   Future<void> _startSplash() async {
-    await _controller.forward();
+  await _controller.forward();
 
-    await Future.delayed(const Duration(milliseconds: 650));
+  await Future.delayed(const Duration(milliseconds: 650));
 
-    if (!mounted) return;
+  if (!mounted) return;
 
-    setState(() => _leaving = true);
+  setState(() => _leaving = true);
 
-    await Future.delayed(const Duration(milliseconds: 300));
+  await Future.delayed(const Duration(milliseconds: 300));
 
-    if (!mounted) return;
+  if (!mounted) return;
 
-    Navigator.of(context).pushReplacement(
-      PageRouteBuilder(
-        transitionDuration: const Duration(milliseconds: 450),
-        pageBuilder: (_, animation, secondaryAnimation) => const LoginScreen(),
-        transitionsBuilder: (_, animation, secondaryAnimation, child) {
-          return FadeTransition(
-            opacity: CurvedAnimation(parent: animation, curve: Curves.easeOut),
-            child: child,
-          );
-        },
-      ),
-    );
+  // Restore the previous login session.
+  bool isLoggedIn = false;
+
+  try {
+    isLoggedIn = await AuthStorage.isLoggedIn();
+  } catch (e) {
+    debugPrint('SESSION RESTORE ERROR: $e');
   }
+
+  if (!mounted) return;
+
+  Navigator.of(context).pushReplacement(
+    PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 450),
+      pageBuilder: (_, animation, secondaryAnimation) {
+        return isLoggedIn
+            ? const MainShell()
+            : const LoginScreen();
+      },
+      transitionsBuilder: (_, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          ),
+          child: child,
+        );
+      },
+    ),
+  );
+}
 
   @override
   void dispose() {

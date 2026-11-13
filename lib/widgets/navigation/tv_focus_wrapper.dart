@@ -136,25 +136,46 @@ class _TvFocusWrapperState extends State<TvFocusWrapper> {
               curve: Curves.easeOutCubic,
               transform: Matrix4.translationValues(0, _focused ? -3.0 : 0.0, 0),
               transformAlignment: Alignment.center,
+              // decoration:
+              // BoxDecoration(
+              //   color: _focused ? const Color(0xFF555555) : Colors.transparent,
+              //   borderRadius: BorderRadius.circular(radius),
+              //   border: Border.all(
+              //     color: _focused
+              //         ? const Color(0xFFD0D0D0)
+              //         : Colors.transparent,
+              //     width: _focused ? 2.0 : 0,
+              //   ),
+              //   boxShadow: _focused
+              //       ? [
+              //           // Blue focus glow
+              //           BoxShadow(
+              //             color: const Color(
+              //               0xFF1E9AE2,
+              //             ).withValues(alpha: 0.65),
+              //             blurRadius: widget.style.blur + 0.20,
+              //             spreadRadius: 2,
+              //             offset: const Offset(0, 2),
+              //           ),
+              //         ]
+              //       : const [],
+              // ),
               decoration: BoxDecoration(
                 color: _focused ? const Color(0xFF555555) : Colors.transparent,
                 borderRadius: BorderRadius.circular(radius),
                 border: Border.all(
                   color: _focused
-                      ? const Color(0xFFD0D0D0)
+                      ? widget.style.borderColor
                       : Colors.transparent,
-                  width: _focused ? 2.0 : 0,
+                  width: _focused ? widget.style.borderWidth : 0,
                 ),
-                boxShadow: _focused
+                boxShadow:
+                    _focused && widget.style.glowColor != Colors.transparent
                     ? [
-                        // Blue focus glow
                         BoxShadow(
-                          color: const Color(
-                            0xFF1E9AE2,
-                          ).withValues(alpha: 0.65),
-                          blurRadius: widget.style.blur + 0.20,
-                          spreadRadius: 2,
-                          offset: const Offset(0, 2),
+                          color: widget.style.glowColor,
+                          blurRadius: widget.style.blur,
+                          spreadRadius: widget.style.spread,
                         ),
                       ]
                     : const [],

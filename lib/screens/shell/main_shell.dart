@@ -96,10 +96,18 @@ class _MainShellState extends State<MainShell> {
     _menuFocusNodes[_selectedIndex].requestFocus();
   }
 
-  void _selectSection(int index) {
-    if (index < 0 || index >= _labels.length) return;
+  // void _selectSection(int index) {
+  //   if (index < 0 || index >= _labels.length) return;
 
-    setState(() => _selectedIndex = index);
+  //   setState(() => _selectedIndex = index);
+
+  void _selectSection(int index) {
+  if (index < 0 || index >= _labels.length) return;
+
+  // Clear focus from the previous page before switching sections.
+  FocusManager.instance.primaryFocus?.unfocus();
+
+  setState(() => _selectedIndex = index);
 
     final navigator = _navigatorKey.currentState;
     if (navigator == null) return;
@@ -127,36 +135,53 @@ class _MainShellState extends State<MainShell> {
     navigator.pushNamedAndRemoveUntil(routeName, (route) => route.isFirst);
   }
 
+  // void _handleBack() {
+  //   if (_showingExitDialog) return;
+
+  //   final rootNavigator = Navigator.of(context, rootNavigator: true);
+
+  //   if (rootNavigator.canPop()) {
+  //     rootNavigator.pop();
+  //     return;
+  //   }
+
+  //   // 2. Then close routes inside MainShell's nested Navigator.
+  //   //    This handles DetailScreen and other pushed pages.
+  //   final navigator = _navigatorKey.currentState;
+
+  //   if (navigator == null) return;
+
+  //   if (navigator.canPop()) {
+  //     navigator.pop();
+  //     return;
+  //   }
+
+  //   // 3. Return to Home from another main section.
+  //   if (_selectedIndex != 0) {
+  //     _selectSection(0);
+  //     return;
+  //   }
+
+  //   // 4. Show exit confirmation only when already on Home.
+  //   _showExitConfirmation();
+  // }
+
   void _handleBack() {
-    if (_showingExitDialog) return;
+  if (_showingExitDialog) return;
 
-    final rootNavigator = Navigator.of(context, rootNavigator: true);
+  final navigator = _navigatorKey.currentState;
 
-    if (rootNavigator.canPop()) {
-      rootNavigator.pop();
-      return;
-    }
+  // Always pop the previous page first.
+  if (navigator != null && navigator.canPop()) {
+    navigator.pop();
+    return;
+  }
 
-    // 2. Then close routes inside MainShell's nested Navigator.
-    //    This handles DetailScreen and other pushed pages.
-    final navigator = _navigatorKey.currentState;
-
-    if (navigator == null) return;
-
-    if (navigator.canPop()) {
-      navigator.pop();
-      return;
-    }
-
-    // 3. Return to Home from another main section.
-    if (_selectedIndex != 0) {
-      _selectSection(0);
-      return;
-    }
-
-    // 4. Show exit confirmation only when already on Home.
+  // Exit only when the actual current page is Home.
+  if (_selectedIndex == 0) {
     _showExitConfirmation();
   }
+}
 
   Future<void> _showExitConfirmation() async {
     if (_showingExitDialog || !mounted) return;

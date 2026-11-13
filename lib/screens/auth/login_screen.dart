@@ -122,7 +122,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-
   KeyEventResult _handleKeypadKey(FocusNode node, KeyEvent event) {
     if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
       return KeyEventResult.ignored;
@@ -327,63 +326,63 @@ class _LoginScreenState extends State<LoginScreen> {
         Focus(
           onKeyEvent: _handleFormKey,
           child: TextField(
-          controller: _mobileController,
-          focusNode: _mobileFocus,
-          readOnly: true,
-          showCursor: false,
-          keyboardType: TextInputType.none,
-          maxLength: 10,
-          autofocus: false,
-          onTap: () => _mobileFocus.requestFocus(),
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 21,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1.2,
-          ),
-          decoration: InputDecoration(
-            counterText: '',
-            hintText: 'Enter your mobile number',
-            hintStyle: const TextStyle(
-              color: Color(0xFF666A73),
-              fontSize: 16,
-              letterSpacing: 0,
+            controller: _mobileController,
+            focusNode: _mobileFocus,
+            readOnly: true,
+            showCursor: false,
+            keyboardType: TextInputType.none,
+            maxLength: 10,
+            autofocus: false,
+            onTap: () => _mobileFocus.requestFocus(),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 1.2,
             ),
-            prefixIcon: const Padding(
-              padding: EdgeInsets.only(left: 16, right: 12),
-              child: Icon(
-                Icons.phone_iphone_rounded,
-                color: _accent,
-                size: 23,
+            decoration: InputDecoration(
+              counterText: '',
+              hintText: 'Enter your mobile number',
+              hintStyle: const TextStyle(
+                color: Color(0xFF666A73),
+                fontSize: 16,
+                letterSpacing: 0,
+              ),
+              prefixIcon: const Padding(
+                padding: EdgeInsets.only(left: 16, right: 12),
+                child: Icon(
+                  Icons.phone_iphone_rounded,
+                  color: _accent,
+                  size: 23,
+                ),
+              ),
+              prefixIconConstraints: const BoxConstraints(
+                minWidth: 54,
+                minHeight: 54,
+              ),
+              filled: true,
+              fillColor: const Color(0xFF08090B),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 18,
+                vertical: 18,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: const BorderSide(color: Color(0xFF292C32)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  color: hasError
+                      ? Colors.redAccent.withValues(alpha: 0.8)
+                      : const Color(0xFF292C32),
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: const BorderSide(color: _accent, width: 1.8),
               ),
             ),
-            prefixIconConstraints: const BoxConstraints(
-              minWidth: 54,
-              minHeight: 54,
-            ),
-            filled: true,
-            fillColor: const Color(0xFF08090B),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 18,
-              vertical: 18,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-              borderSide: const BorderSide(color: Color(0xFF292C32)),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(
-                color: hasError
-                    ? Colors.redAccent.withValues(alpha: 0.8)
-                    : const Color(0xFF292C32),
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
-              borderSide: const BorderSide(color: _accent, width: 1.8),
-            ),
-          ),
           ),
         ),
         if (_validationMessage != null) ...[
@@ -410,46 +409,69 @@ class _LoginScreenState extends State<LoginScreen> {
     return Focus(
       onKeyEvent: _handleFormKey,
       child: SizedBox(
-      width: double.infinity,
-      height: 56,
-      child: ElevatedButton(
-        focusNode: _buttonFocus,
-        onPressed: _loading ? null : _getOtp,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: _accent,
-          foregroundColor: const Color(0xFF001416),
-          disabledBackgroundColor: _accent.withValues(alpha: 0.55),
-          disabledForegroundColor: const Color(0xFF001416),
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+        width: double.infinity,
+        height: 56,
+        child: ElevatedButton(
+          focusNode: _buttonFocus,
+          onPressed: _loading ? null : _getOtp,
+          // style: ElevatedButton.styleFrom(
+          //   backgroundColor: _accent,
+          //   foregroundColor: const Color(0xFF001416),
+          //   disabledBackgroundColor: _accent.withValues(alpha: 0.55),
+          //   disabledForegroundColor: const Color(0xFF001416),
+          //   elevation: 0,
+          //   shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.circular(16),
+          //   ),
+          // ),
+
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.disabled)) {
+                return _accent.withValues(alpha: 0.55);
+              }
+              if (states.contains(WidgetState.focused)) {
+                return Colors.white;
+              }
+              return _accent;
+            }),
+            foregroundColor: WidgetStateProperty.resolveWith((states) {
+              if (states.contains(WidgetState.focused)) {
+                return const Color(0xFF0755B0);
+              }
+              return const Color(0xFF001416);
+            }),
+            elevation: const WidgetStatePropertyAll(0),
+            padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            ),
           ),
-        ),
-        child: _loading
-            ? const SizedBox(
-                width: 23,
-                height: 23,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.4,
-                  color: Color(0xFF001416),
-                ),
-              )
-            : const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'CONTINUE',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.5,
-                    ),
+          child: _loading
+              ? const SizedBox(
+                  width: 23,
+                  height: 23,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2.4,
+                    color: Color(0xFF001416),
                   ),
-                  SizedBox(width: 10),
-                  Icon(Icons.arrow_forward_rounded, size: 20),
-                ],
-              ),
-      ),
+                )
+              : const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'CONTINUE',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Icon(Icons.arrow_forward_rounded, size: 20),
+                  ],
+                ),
+        ),
       ),
     );
   }
@@ -532,15 +554,30 @@ class _LoginScreenState extends State<LoginScreen> {
               childAspectRatio: 1.18,
               children: [
                 for (final digit in const [
-                  '1', '2', '3',
-                  '4', '5', '6',
-                  '7', '8', '9',
+                  '1',
+                  '2',
+                  '3',
+                  '4',
+                  '5',
+                  '6',
+                  '7',
+                  '8',
+                  '9',
                 ])
                   _buildKeypadButton(
                     label: digit,
-                    focusNode: _keypadFocusNodes[
-                      const ['1','2','3','4','5','6','7','8','9'].indexOf(digit)
-                    ],
+                    focusNode:
+                        _keypadFocusNodes[const [
+                          '1',
+                          '2',
+                          '3',
+                          '4',
+                          '5',
+                          '6',
+                          '7',
+                          '8',
+                          '9',
+                        ].indexOf(digit)],
                     onPressed: () => _addDigit(digit),
                   ),
                 _buildKeypadButton(
@@ -566,11 +603,7 @@ class _LoginScreenState extends State<LoginScreen> {
           const SizedBox(height: 12),
           const Text(
             'BACKSPACE                         CLEAR',
-            style: TextStyle(
-              color: _muted,
-              fontSize: 9,
-              letterSpacing: 0.8,
-            ),
+            style: TextStyle(color: _muted, fontSize: 9, letterSpacing: 0.8),
           ),
         ],
       ),
@@ -666,10 +699,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(width: compact ? 24 : 42),
               // RIGHT SIDE: NUMERIC KEYPAD
-              Expanded(
-                flex: 4,
-                child: Center(child: _buildNumpad()),
-              ),
+              Expanded(flex: 4, child: Center(child: _buildNumpad())),
             ],
           ),
         ),
@@ -715,9 +745,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 }
 
-                return _buildLoginForm(
-                  availableHeight: constraints.maxHeight,
-                );
+                return _buildLoginForm(availableHeight: constraints.maxHeight);
               },
             ),
           ),

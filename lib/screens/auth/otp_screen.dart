@@ -51,6 +51,16 @@ class _OtpScreenState extends State<OtpScreen> {
 
   static const Color _muted = Color(0xFF969BA5);
 
+  void _restoreVerifyFocus() {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (!mounted) return;
+
+    if (_verifyFocus.canRequestFocus) {
+      _verifyFocus.requestFocus();
+    }
+  });
+}
+
   @override
   void initState() {
     super.initState();
@@ -131,13 +141,21 @@ class _OtpScreenState extends State<OtpScreen> {
   void _showConnectionError(ConnectionErrorType type) {
     if (!mounted) return;
 
+    // setState(() {
+    //   _connectionErrorType = type;
+
+    //   _validationMessage = null;
+
+    //   _resendMessage = null;
+    // });
+
     setState(() {
-      _connectionErrorType = type;
+  _loading = true;
+  _validationMessage = null;
+  _resendMessage = null;
+});
 
-      _validationMessage = null;
-
-      _resendMessage = null;
-    });
+_restoreVerifyFocus();
   }
 
   void _showValidationMessage(String message) {
@@ -241,6 +259,8 @@ class _OtpScreenState extends State<OtpScreen> {
           _loading = false;
 
           _connectionErrorType = null;
+
+          _restoreVerifyFocus();
 
           _validationMessage = 'Invalid OTP.';
         });
@@ -822,72 +842,136 @@ class _OtpScreenState extends State<OtpScreen> {
     );
   }
 
+  // Widget _buildVerifyButton() {
+  //   return Focus(
+  //     onKeyEvent: _handleFormKey,
+  //     child: SizedBox(
+  //     width: double.infinity,
+
+  //     height: 58,
+
+  //     child: ElevatedButton(
+  //       focusNode: _verifyFocus,
+
+  //       onPressed: (_loading || _resending) ? null : _verifyOtp,
+
+  //       style: ElevatedButton.styleFrom(
+  //         backgroundColor: _accent,
+
+  //         foregroundColor: const Color(0xFF001416),
+
+  //         disabledBackgroundColor: _accent.withValues(alpha: 0.5),
+
+  //         disabledForegroundColor: const Color(0xFF001416),
+
+  //         elevation: 0,
+
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(16),
+  //         ),
+  //       ),
+
+  //       child: _loading
+  //           ? const SizedBox(
+  //               height: 23,
+
+  //               width: 23,
+
+  //               child: CircularProgressIndicator(
+  //                 strokeWidth: 2.4,
+
+  //                 color: Color(0xFF001416),
+  //               ),
+  //             )
+  //           : const Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+
+  //               children: [
+  //                 Text(
+  //                   'VERIFY & CONTINUE',
+
+  //                   style: TextStyle(
+  //                     fontSize: 14,
+
+  //                     fontWeight: FontWeight.w800,
+
+  //                     letterSpacing: 1.2,
+  //                   ),
+  //                 ),
+
+  //                 SizedBox(width: 10),
+
+  //                 Icon(Icons.arrow_forward_rounded, size: 20),
+  //               ],
+  //             ),
+  //     ),
+  //     ),
+  //   );
+  // }
+
   Widget _buildVerifyButton() {
-    return Focus(
-      onKeyEvent: _handleFormKey,
-      child: SizedBox(
+  return Focus(
+    onKeyEvent: _handleFormKey,
+    child: SizedBox(
       width: double.infinity,
-
       height: 58,
-
       child: ElevatedButton(
         focusNode: _verifyFocus,
 
-        onPressed: (_loading || _resending) ? null : _verifyOtp,
+        // Keep enabled so it retains focus while loading.
+        // _verifyOtp() already prevents duplicate requests.
+        onPressed: _verifyOtp,
 
-        style: ElevatedButton.styleFrom(
-          backgroundColor: _accent,
-
-          foregroundColor: const Color(0xFF001416),
-
-          disabledBackgroundColor: _accent.withValues(alpha: 0.5),
-
-          disabledForegroundColor: const Color(0xFF001416),
-
-          elevation: 0,
-
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.focused)) {
+              return Colors.white;
+            }
+            return _accent;
+          }),
+          foregroundColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.focused)) {
+              return const Color(0xFF0755B0);
+            }
+            return const Color(0xFF001416);
+          }),
+          elevation: const WidgetStatePropertyAll(0),
+          padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
           ),
         ),
 
         child: _loading
             ? const SizedBox(
                 height: 23,
-
                 width: 23,
-
                 child: CircularProgressIndicator(
                   strokeWidth: 2.4,
-
-                  color: Color(0xFF001416),
+                  color: Color(0xFF0755B0),
                 ),
               )
             : const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: [
                   Text(
                     'VERIFY & CONTINUE',
-
                     style: TextStyle(
                       fontSize: 14,
-
                       fontWeight: FontWeight.w800,
-
                       letterSpacing: 1.2,
                     ),
                   ),
-
                   SizedBox(width: 10),
-
                   Icon(Icons.arrow_forward_rounded, size: 20),
                 ],
               ),
       ),
-      ),
-    );
-  }
+    ),
+  );
+}
 
   Widget _buildOtpForm(
     BoxConstraints constraints, {

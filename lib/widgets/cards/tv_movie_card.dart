@@ -55,6 +55,9 @@ class _TvMovieCardState extends State<TvMovieCard> {
     const aspectRatio = 2 / 3;
     final width = AppDimensions.posterWidth(context) * 1.15;
 
+    final dpr = MediaQuery.devicePixelRatioOf(context);
+final imageCacheWidth = (width * dpr).round();
+
     return SizedBox(
       width: width,
       child: Builder(
@@ -111,8 +114,10 @@ class _TvMovieCardState extends State<TvMovieCard> {
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
-                          _buildImage(imageUrl: imageUrl),
-
+                          _buildImage(
+                            imageUrl: imageUrl,
+                            cacheWidth: imageCacheWidth,
+                          ),
                           if (widget.video.isPremium)
                             Positioned(
                               top: 10,
@@ -161,38 +166,42 @@ class _TvMovieCardState extends State<TvMovieCard> {
     );
   }
 
-  Widget _buildImage({required String imageUrl}) {
-    if (imageUrl.isEmpty) {
-      return _buildPlaceholder();
-    }
-
-    return Image.network(
-      imageUrl,
-      width: double.infinity,
-      height: double.infinity,
-      fit: BoxFit.cover,
-      errorBuilder: (context, error, stackTrace) {
-        debugPrint('TV MOVIE IMAGE ERROR: $imageUrl');
-        return _buildPlaceholder();
-      },
-      loadingBuilder: (context, child, loadingProgress) {
-        if (loadingProgress == null) return child;
-
-        return Container(
-          color: AppColors.surface,
-          alignment: Alignment.center,
-          child: const SizedBox(
-            width: 28,
-            height: 28,
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-              color: _accent,
-            ),
-          ),
-        );
-      },
-    );
+Widget _buildImage({
+  required String imageUrl,
+  required int cacheWidth,
+}) {
+  if (imageUrl.isEmpty) {
+    return _buildPlaceholder();
   }
+
+  return Image.network(
+    imageUrl,
+    width: double.infinity,
+    height: double.infinity,
+    fit: BoxFit.cover,
+    cacheWidth: cacheWidth,
+    errorBuilder: (context, error, stackTrace) {
+      debugPrint('TV MOVIE IMAGE ERROR: $imageUrl');
+      return _buildPlaceholder();
+    },
+    loadingBuilder: (context, child, loadingProgress) {
+      if (loadingProgress == null) return child;
+
+      return Container(
+        color: AppColors.surface,
+        alignment: Alignment.center,
+        child: const SizedBox(
+          width: 28,
+          height: 28,
+          child: CircularProgressIndicator(
+            strokeWidth: 2,
+            color: _accent,
+          ),
+        ),
+      );
+    },
+  );
+}
 
   Widget _buildPlaceholder() {
     return Container(

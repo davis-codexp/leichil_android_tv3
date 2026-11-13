@@ -1,0 +1,905 @@
+--------- beginning of main
+11-12 23:00:59.446  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+--------- beginning of system
+11-12 23:00:59.535  2958  2958 W Looper  : Slow dispatch took 2004ms main h=android.os.Handler c=android.app.AlarmManager$ListenerWrapper@5f0956c m=0
+11-12 23:00:59.536  2958  2958 W Looper  : Slow delivery took 2003ms main h=com.android.server.AlarmManagerService$AlarmHandler c=null m=4
+11-12 23:00:59.548  2958  2958 W Looper  : Drained
+11-12 23:00:59.563  2958  6228 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = androidstatsTag = *walarm*:*job.deadline* @10875642 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:00:59.564  2958  6228 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = androidstatsTag = *walarm*:*job.deadline* @7685980 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:00.000  3644  3644 E AgentTimeActionReceiver: {DT} CAUTION: time sync feature is not enabled
+11-12 23:01:00.001  3644  3644 E TimeMsgProcess: {DT} msgTpye:14
+11-12 23:01:00.005  3644  3644 E TimeMsgProcess: {DT} TimeMsgProcess.isSystemTimeAutomatic(context)=trueTimeMsgProcess.isNetworkConnected(context)=true
+11-12 23:01:00.005  3644  3644 E AgentTimeActionReceiver: {DT} CAUTION: time sync feature is not enabled
+11-12 23:01:00.005  3644  3644 E TimeMsgProcess: {DT} msgTpye:14
+11-12 23:01:00.011  3644  3644 E TimeMsgProcess: {DT} TimeMsgProcess.isSystemTimeAutomatic(context)=trueTimeMsgProcess.isNetworkConnected(context)=true
+11-12 23:01:00.447  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:03.452  3644  5000 I chatty  : uid=1000(system) Thread-10 identical 24 lines
+11-12 23:01:05.156  4692  4880 I cast_shell: [1112/230105.156212:INFO:mdns_app_filter.cc(3358)] MdnsAppFilter: responses sent in 96 seconds: 2
+11-12 23:01:25.190  2841  2841 I chatty  : uid=0(root) /vendor/bin/k2logcat expire 45 lines
+11-12 23:01:25.194 15110 15110 I chatty  : uid=10055(com.homwee.aipont) expire 14 lines
+11-12 23:01:25.248  2958  6228 I chatty  : uid=1000(system) Binder:2958_1A expire 7 lines
+11-12 23:01:25.270  2658  5327 I audio_hw_primary: mi_common_pcm_open: MI_PCM_Init OK, ret=0x2 !!
+11-12 23:01:25.276  2658  5327 I audio_hw_primary: mi_common_pcm_open: MI_PCM_Open OK, IO handle = 13, pcm_handle = 0x81000000, Channel 2, Sample rate 48000 !!
+11-12 23:01:25.276  2658  5327 I audio_hw_primary: mi_common_pcm_open: MI_AOUT_ConnectInput OK, MI_AOUT handle=0x17000000, MI_AOUT path=ALL, MI_PCM handle=0x81000000 !!
+11-12 23:01:25.276  2658  5327 D audio_hw_primary: mi_common_pcm_start: out 0xb0f24000, handle 0x81000000
+11-12 23:01:25.276  2658  5327 I audio_hw_primary: mi_common_pcm_start: MI_PCM_Start OK, handle=0x81000000
+11-12 23:01:25.276  2658  5327 D audio_hw_primary: mi_common_pcm_open: out 0xb0f24000, handle 0x81000000, device[speaker], path[HW DMA Reader1], format pcm, chn 2, sr 48000, dma input chn 2, blocking-mode 0
+11-12 23:01:25.293  2658  5327 I audio_hw_primary: out_write: handle=13, current state(0) enter PLAY state
+11-12 23:01:25.293  2680  3125 D AudioFlinger: mixer(0xab229500) throttle end: throttle time(40)
+11-12 23:01:25.487  3644  5000 I chatty  : uid=1000(system) Thread-10 expire 1 line
+11-12 23:01:25.655  2680  3125 D AudioFlinger: mixer(0xab229500) throttle end: throttle time(39)
+11-12 23:01:26.357  2958  3734 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.example.leichil_android_tv/.MainActivity} from uid 10055
+11-12 23:01:26.359  3644  3660 I chatty  : uid=1000(system) Binder:3644_1 expire 2 lines
+11-12 23:01:26.398  2958  3012 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10093; state: DISABLED
+11-12 23:01:26.398  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10093; state: ENABLED
+11-12 23:01:26.416  2490  2490 I chatty  : uid=0(root) main expire 6 lines
+11-12 23:01:26.436  2958  3023 I ActivityManager: Start proc 15544:com.example.leichil_android_tv/u0a93 for pre-top-activity {com.example.leichil_android_tv/com.example.leichil_android_tv.MainActivity}
+11-12 23:01:26.447 15544 15544 E chil_android_t: Not starting debugger since process cannot load the jdwp agent.
+11-12 23:01:26.461  2958  6228 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+11-12 23:01:26.491  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:26.530 15544 15544 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-12 23:01:26.530 15544 15544 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-12 23:01:26.642 15544 15568 D skia    : [SkFontMgr Android Parser] '/product/etc/fonts_customization.xml' could not be opened
+11-12 23:01:26.728 15544 15544 W chil_android_tv: type=1400 audit(0.0:1235): avc: denied { read } for name="max_map_count" dev="proc" ino=127720 scontext=u:r:untrusted_app:s0:c93,c256,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.example.leichil_android_tv
+11-12 23:01:26.767 15544 15569 E vulkan  : couldn't find symbol 'HMI' in HAL library: undefined symbol: HMI
+11-12 23:01:26.770 15544 15569 D vulkan  : searching for layers in '/data/app/~~gW7NDQeqKJkQyipyuQEONw==/com.example.leichil_android_tv-qJcc6chXXWdf9wKsEPKAPA==/lib/arm'
+11-12 23:01:26.770 15544 15569 D vulkan  : searching for layers in '/data/app/~~gW7NDQeqKJkQyipyuQEONw==/com.example.leichil_android_tv-qJcc6chXXWdf9wKsEPKAPA==/base.apk!/lib/armeabi-v7a'
+11-12 23:01:26.780 15544 15569 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-12 23:01:26.786 15544 15569 E flutter : [ERROR:flutter/impeller/toolkit/egl/egl.cc(56)] EGL Error: Bad Attribute (12292) in ../../../flutter/impeller/toolkit/egl/display.cc:161
+11-12 23:01:26.819 15544 15569 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+11-12 23:01:27.168 15544 15544 I Choreographer: Skipped 36 frames!  The application may be doing too much work on its main thread.
+11-12 23:01:27.202  2340  2340 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+11-12 23:01:27.202 15544 15569 I Gralloc4: mapper 4.x is not supported
+11-12 23:01:27.203  2340  2340 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+11-12 23:01:27.203 15544 15569 W Gralloc3: mapper 3.x is not supported
+11-12 23:01:27.211 15544 15569 D gralloc : [ion_open:103] mma_open()
+11-12 23:01:27.211 15544 15569 D gralloc : [mma_open:49] 
+11-12 23:01:27.211 15544 15569 D gralloc : [ion_open:116] mma_open() failed! status=-19 errno=2
+11-12 23:01:27.295 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:27.306 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:27.339  2958  3021 I chatty  : uid=1000(system) android.bg expire 3 lines
+11-12 23:01:27.359 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:27.469 15544 15569 I chatty  : uid=10093(com.example.leichil_android_tv) identical 146 lines
+11-12 23:01:27.480 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:27.494  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:27.499 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:28.309 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:28.310 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:28.325 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:28.492 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:28.495  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:28.508 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.327 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.328 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:29.341 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.426 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.437  2658  2719 D audio_hw_primary: out_standby: handle=13
+11-12 23:01:29.437  2658  2719 D audio_hw_primary: mi_common_pcm_stop: out 0xb0f24000, handle 0x81000000
+11-12 23:01:29.442 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.453  2658  2719 I audio_hw_primary: mi_common_pcm_stop: MI_PCM_Stop OK, handle=0x81000000
+11-12 23:01:29.453  2658  2719 I audio_hw_primary: mi_common_pcm_close: MI_AOUT_DisconnectInput OK, MI_AOUT handle=0x17000000, MI_AOUT path=ALL, MI_PCM handle=0x81000000 !!
+11-12 23:01:29.453  2658  2719 D audio_hw_primary: mi_common_pcm_close: out 0xb0f24000, IO handle = 13, pcm_handle = 0x81000000
+11-12 23:01:29.458 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.461  2958  3734 I chatty  : uid=1000(system) Binder:2958_7 expire 1 line
+11-12 23:01:29.475 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.492 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:29.497  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:29.509 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:30.058 15544 15569 E flutter : [ERROR:flutter/impeller/entity/contents/contents.cc(119)] Impeller validation: Contents::SetInheritedOpacity should never be called when Contents::CanAcceptOpacity returns false.
+11-12 23:01:30.343 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:30.499  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:30.514  2958  3999 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-12 23:01:31.500  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:31.564  2958  2958 W Looper  : Slow dispatch took 2004ms main h=android.os.Handler c=android.app.AlarmManager$ListenerWrapper@5f0956c m=0
+11-12 23:01:31.564  2958  2958 W Looper  : Slow delivery took 2004ms main h=com.android.server.AlarmManagerService$AlarmHandler c=null m=4
+11-12 23:01:31.577  2958  2958 W Looper  : Drained
+11-12 23:01:31.595  2958  3734 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = androidstatsTag = *walarm*:*job.deadline* @10875642 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:31.597  2958  3734 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = androidstatsTag = *walarm*:*job.deadline* @7718012 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:31.609 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: EncryptedSharedPreferences initialization failed. Falling back to custom ciphers.
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: java.lang.SecurityException: Could not decrypt key. decryption failed
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at v0.x.h(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:15)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at v3.c.getAll(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:97)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at t3.g.k(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:1)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at a4.k0.g(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:1129)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at t3.g.l(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:237)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at t3.i.run(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:119)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at android.os.Handler.handleCallback(Handler.java:938)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: Caused by: java.security.GeneralSecurityException: decryption failed
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at a0.d.i(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:3)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at j3.d.b(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:32)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	at v3.c.getAll(r8-map-id-9637e51a4fef1a6c7eaa0e51104952e4dd2f6ffeb3d9d6d02555dab6917e918d:62)
+11-12 23:01:32.047 15544 15580 E FlutterSecureStorage: 	... 8 more
+11-12 23:01:32.128 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:32.128 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents/home/list?content-type=MOVIE
+11-12 23:01:32.128 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:32.128 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents/home/list?content-type=SERIES
+11-12 23:01:32.188 15544 15601 D ProfileInstaller: Skipping profile installation for com.example.leichil_android_tv
+11-12 23:01:32.502  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:32.607 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:32.607 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:32.607 15544 15544 I flutter : =============================
+11-12 23:01:32.612 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:32.612 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:32.612 15544 15544 I flutter : =============================
+11-12 23:01:32.612 15544 15544 I flutter : LEICHIL TV: movie segments=1, series segments=1
+11-12 23:01:32.612 15544 15544 I flutter : MOVIE SEGMENT: title="New Releases", type="MOVIE", listType="new", items=5
+11-12 23:01:32.612 15544 15544 I flutter : SERIES SEGMENT: title="New Releases", type="SERIES", listType="new", items=1
+11-12 23:01:32.613 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:33.508  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:33.617 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:33.951  4692  4692 I cast_shell: [1112/230133.951453:INFO:service_base.h(78)] Size of the map for type AuthTokenResponse is 0
+11-12 23:01:33.968  4692  4692 I cast_shell: [1112/230133.968099:INFO:service_base.h(246)] Container sizes for type CloudSetting are (session_info_map: 0), (topic_info_map: 21), (pending_events: 0).
+11-12 23:01:34.332  4692  4692 I cast_shell: [1112/230134.332758:INFO:metrics_stat_logger.cc(38)] Metrics stat for the past 60 secs : total=2
+11-12 23:01:34.332  4692  4692 I cast_shell: [metrics_stat_logger] Cast.Discovery.Mdns.Request.In=2
+11-12 23:01:34.332  4692  4692 I cast_shell: [metrics_stat_logger] Cast.Discovery.Mdns.Response.Out=2
+11-12 23:01:34.510  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:34.599  4692  4880 I cast_shell: [1112/230134.599853:INFO:mdns_app_filter.cc(3550)] Mdns cast queries recently sent: queries=1
+11-12 23:01:34.630 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:34.896 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:34.896 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents?limit=10&offset=0
+11-12 23:01:35.268 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:35.268 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:35.268 15544 15544 I flutter : =============================
+11-12 23:01:35.269 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:35.269 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents?limit=10&offset=10
+11-12 23:01:35.512  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:35.630 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:35.630 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:35.630 15544 15544 I flutter : =============================
+11-12 23:01:35.631 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:35.631 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents?limit=10&offset=20
+11-12 23:01:35.646 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:35.891  2841  2841 I chatty  : uid=0(root) /vendor/bin/k2logcat expire 42 lines
+11-12 23:01:35.985 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:35.985 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:35.985 15544 15544 I flutter : =============================
+11-12 23:01:36.515  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:36.650 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:37.521  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:37.666 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:37.938  2958  3734 I ActivityManager: Process com.google.process.gapps (pid 15182) has died: cch+15 CEM 
+11-12 23:01:37.963  2958  3031 I chatty  : uid=1000(system) ActivityManager expire 10 lines
+11-12 23:01:37.992  2958  3734 I ActivityManager: Process com.google.process.gservices (pid 15077) has died: cch+5 CEM 
+11-12 23:01:38.025  2958  5927 I ActivityManager: Process com.homwee.aipont (pid 15110) has died: prev LAST
+11-12 23:01:38.026  2958  9392 I WindowManager: WIN DEATH: Window{cb5a7e2 u0 com.homwee.aipont/com.homwee.aipont.activity.ChannelMainActivity}
+11-12 23:01:38.035  2958  9392 I chatty  : uid=1000(system) Binder:2958_20 expire 1 line
+11-12 23:01:38.101  2958  3012 W ActivityManager: setHasOverlayUi called on unknown pid: 15110
+11-12 23:01:38.127  4979  4979 I katniss_search_TvSearchApp: onTrimMemory level=80
+11-12 23:01:38.226  2958  6506 I WindowManager: WIN DEATH: Window{7eb6511 u0 com.google.android.tvlauncher/com.google.android.tvlauncher.MainActivity}
+11-12 23:01:38.227  2958  6506 I chatty  : uid=1000(system) Binder:2958_1B expire 2 lines
+11-12 23:01:38.231  2958  6228 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=109, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ], android.os.BinderProxy@5b897c9)
+11-12 23:01:38.231  2958  5919 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=107, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ], android.os.BinderProxy@c4e0ece)
+11-12 23:01:38.232  2958  4272 I ActivityManager: Process com.google.android.tvlauncher (pid 15135) has died: home HOME
+11-12 23:01:38.232  2958  3459 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=108, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ], android.os.BinderProxy@71341ef)
+11-12 23:01:38.237  2958  3499 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=109, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] (release request)
+11-12 23:01:38.253 14986 14986 I chatty  : uid=10002(com.google.android.gms) expire 7 lines
+11-12 23:01:38.259  2958  3012 W ActivityManager: setHasOverlayUi called on unknown pid: 15135
+11-12 23:01:38.262  2958  3499 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=108, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] (release request)
+11-12 23:01:38.262  2958  3499 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=107, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] (release request)
+11-12 23:01:38.368  4979  5079 I katniss_search_KatnissAccountManagerImpl: Retrieved 1 Google account from GMS.
+11-12 23:01:38.369  4979  5079 I katniss_search_GlobalAccountsAccessor: Writing 1 accounts
+11-12 23:01:38.483  2958  6506 I ActivityManager: Process com.google.android.leanbacklauncher.partnercustomizer (pid 15352) has died: cch+5 CEM 
+11-12 23:01:38.529  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:38.978 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:39.003 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:39.003 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents/1052
+11-12 23:01:39.009 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:39.009 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/activities/favourites?limit=1000
+11-12 23:01:39.539 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:39.539 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:39.539 15544 15544 I flutter : =============================
+11-12 23:01:39.541  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:39.544 15544 15544 I flutter : ========== API GET ==========
+11-12 23:01:39.544 15544 15544 I flutter : URL: https://leichiltv.com/api/v1/app/contents
+11-12 23:01:39.661 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:39.661 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:39.661 15544 15544 I flutter : =============================
+11-12 23:01:39.795  2841  2841 D MTK_KL  : 4,362469,7666313471,-;   Total_free = 16224kB, free_cma=0kB, Totalreserve_pages = 31476kB, MAPPED = 58732kB
+11-12 23:01:39.795  2841  2841 D MTK_KL  : 6,362470,7666313476,-;lowmemorykiller: total_free is 4056, other_free is -3555, free_cma is 0
+11-12 23:01:39.795  2841  2841 D MTK_KL  : 6,362471,7666313480,-;lowmemorykiller: other_file is 15147, active_file is 7536, inactive_file is 7545\x0a\x0a
+11-12 23:01:39.842  2958  2958 V NotificationListeners: 0 notification listener connection lost: ComponentInfo{com.google.android.tvrecommendations/com.google.android.tvrecommendations.NotificationsService}
+11-12 23:01:39.842  2958  3459 I ActivityManager: Process com.google.android.tvrecommendations (pid 15268) has died: prcl BFGS
+11-12 23:01:39.848  2958  5926 D NotificationListeners: Removing active service ComponentInfo{com.google.android.tvrecommendations/com.google.android.tvrecommendations.NotificationsService}
+11-12 23:01:39.849  2490  2490 I Zygote  : Process 15268 exited due to signal 9 (Killed)
+11-12 23:01:39.935  2958  3459 W ActivityManager: Scheduling restart of crashed service com.google.android.tvrecommendations/.NotificationsService in 1000ms for connection
+11-12 23:01:40.064 15544 15544 I flutter : HTTP STATUS: 200
+11-12 23:01:40.064 15544 15544 I flutter : CONTENT TYPE: application/json
+11-12 23:01:40.064 15544 15544 I flutter : =============================
+11-12 23:01:40.115 15544 15569 E libEGL  : called unimplemented OpenGL ES API
+11-12 23:01:40.131  2841  2841 D MTK_KL  : 6,362472,7666647042,-;lowmemorykiller: Killing '.homwee.synckey' (15375) (tgid 15375), adj 200,\x0a   to free 7392kB on behalf of 'io.worker.2' (15572) because\x0a   cache 47084kB is below limit 16384kB for oom_score_adj 200\x0a   Free memory is -14256kB above reserved
+11-12 23:01:40.131  2841  2841 D MTK_KL  : 4,362473,7666647053,-;   Total_free = 10956kB, free_cma=0kB, Totalreserve_pages = 31476kB, MAPPED = 42896kB
+11-12 23:01:40.131  2841  2841 D MTK_KL  : 6,362474,7666647058,-;lowmemorykiller: total_free is 2739, other_free is -3564, free_cma is 0
+11-12 23:01:40.131  2841  2841 D MTK_KL  : 6,362475,7666647079,-;lowmemorykiller: other_file is 11771, active_file is 5468, inactive_file is 6246\x0a\x0a
+11-12 23:01:40.174  2958  2958 W Looper  : Slow dispatch took 153ms main h=com.android.server.job.JobSchedulerService$JobHandler c=null m=1
+11-12 23:01:40.195  2958  5922 I ActivityManager: Process com.homwee.synckey (pid 15375) has died: prcp FGS 
+11-12 23:01:40.199 15426 15426 E MtkTvFApiManager(server): <serviceDied:38> Client disconnect 0
+11-12 23:01:40.201  2958  5922 W ActivityManager: Scheduling restart of crashed service com.homwee.synckey/.service.SyncKeyService in 10732ms for start-requested
+11-12 23:01:40.202  2958  5922 W ActivityManager: Scheduling restart of crashed service com.homwee.synckey/.service.ScreenOnService in 20731ms for start-requested
+11-12 23:01:40.216  2490  2490 I Zygote  : Process 15375 exited due to signal 9 (Killed)
+11-12 23:01:40.230  2958  2958 I chatty  : uid=1000 system_server expire 3 lines
+11-12 23:01:40.575  2841  2841 D MTK_KL  : 6,362476,7667092953,-;lowmemorykiller: Killing 'gle.android.gms' (14986) (tgid 14986), adj 100,\x0a   to free 15620kB on behalf of 'kswapd0' (875) because\x0a   cache 23908kB is below limit 10240kB for oom_score_adj 100\x0a   Free memory is -2376kB above reserved
+11-12 23:01:40.575  2841  2841 D MTK_KL  : 4,362477,7667092963,-;   Total_free = 9916kB, free_cma=52kB, Totalreserve_pages = 31476kB, MAPPED = 25412kB
+11-12 23:01:40.575  2841  2841 D MTK_KL  : 6,362478,7667092968,-;lowmemorykiller: total_free is 2479, other_free is -594, free_cma is 13
+11-12 23:01:40.575  2841  2841 D MTK_KL  : 6,362479,7667092973,-;lowmemorykiller: other_file is 5977, active_file is 2891, inactive_file is 3025\x0a\x0a
+11-12 23:01:40.629  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:40.685  2490  2490 I Zygote  : Process 14986 exited due to signal 9 (Killed)
+11-12 23:01:40.686  2958  6506 I ActivityManager: Process com.google.android.gms (pid 14986) has died: vis BFGS
+11-12 23:01:40.690  2958  4069 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=106, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ], android.os.BinderProxy@382823d)
+11-12 23:01:40.690  2958  5918 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ TRACK_DEFAULT id=105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ], android.os.BinderProxy@a6e3a32)
+11-12 23:01:40.691  2958  7980 D ConnectivityService: ConnectivityService NetworkRequestInfo binderDied(NetworkRequest [ LISTEN id=104, [ Capabilities: INTERNET&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ], android.os.BinderProxy@b563383)
+11-12 23:01:40.737  2958  3499 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=105, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ] (release request)
+11-12 23:01:40.747  2958  3499 D ConnectivityService: releasing NetworkRequest [ TRACK_DEFAULT id=106, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ] (release request)
+11-12 23:01:40.784  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 30192ms for connection
+11-12 23:01:40.785  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 40191ms for connection
+11-12 23:01:40.785  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.persistent.LocationPersistentService in 72518ms for start-requested
+11-12 23:01:40.785  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.nts.SchedulerService in 82518ms for start-requested
+11-12 23:01:40.785  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.stats.eastworld.EastworldService in 92517ms for start-requested
+11-12 23:01:40.786  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 102517ms for connection
+11-12 23:01:40.786  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 112517ms for start-requested
+11-12 23:01:40.786  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 122517ms for connection
+11-12 23:01:40.786  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.clearcut.debug.ClearcutDebugDumpService in 132517ms for start-requested
+11-12 23:01:40.787  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 142516ms for connection
+11-12 23:01:40.787  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.common.stats.GmsCoreStatsService in 152516ms for start-requested
+11-12 23:01:40.788  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 162516ms for start-requested
+11-12 23:01:40.788  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 172516ms for connection
+11-12 23:01:40.788  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.play.integrity.api.service.IntegrityApiPersistentService in 182516ms for start-requested
+11-12 23:01:40.788  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 192515ms for start-requested
+11-12 23:01:40.789  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.fido.authenticator.service.AuthenticatorService in 202515ms for start-requested
+11-12 23:01:40.789  2958  6506 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 212515ms for start-requested
+11-12 23:01:41.082  2958  3021 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10002; state: DISABLED
+11-12 23:01:41.085  2958  3021 W ActivityManager: Slow operation: 86ms so far, now at startProcess: done starting proc!
+11-12 23:01:41.086  2958  3023 W ActivityManager: Slow operation: 56ms so far, now at startProcess: asking zygote to start proc
+11-12 23:01:41.088  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10002; state: ENABLED
+11-12 23:01:41.097  2958  3022 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10007; state: DISABLED
+11-12 23:01:41.103  2958  3008 W Looper  : Slow dispatch took 427ms android.fg h=android.os.Handler c=android.app.LoadedApk$ServiceDispatcher$RunConnection@9be84df m=0
+11-12 23:01:41.130  2958  3008 W Looper  : Slow delivery took 430ms android.fg h=android.os.Handler c=android.app.LoadedApk$ServiceDispatcher$RunConnection@f308ffb m=0
+11-12 23:01:41.131  2958  3008 W Looper  : Drained
+11-12 23:01:41.143  2958  3010 W Looper  : Slow dispatch took 330ms android.ui h=com.android.server.am.ActivityManagerService$UiHandler c=null m=53
+11-12 23:01:41.143  2958  3010 W Looper  : Slow delivery took 235ms android.ui h=com.android.server.am.ActivityManagerService$UiHandler c=null m=31
+11-12 23:01:41.256  2490  2490 D Zygote  : Forked child process 15671
+11-12 23:01:41.285  2958  3023 W ActivityManager: Slow operation: 255ms so far, now at startProcess: returned from zygote!
+11-12 23:01:41.292  2958  3023 W ActivityManager: Slow operation: 261ms so far, now at startProcess: done updating battery stats
+11-12 23:01:41.296  2958  3023 W ActivityManager: Slow operation: 266ms so far, now at startProcess: building log message
+11-12 23:01:41.296  2958  3023 I ActivityManager: Start proc 15671:com.google.android.gms/u0a2 for service {com.google.android.gms/com.google.android.gms.chimera.PersistentBoundBrokerService}
+11-12 23:01:41.296  2958  3023 W ActivityManager: Slow operation: 266ms so far, now at startProcess: starting to update pids map
+11-12 23:01:41.296  2958  3023 W ActivityManager: Slow operation: 266ms so far, now at startProcess: done updating pids map
+11-12 23:01:41.296  2958  3023 W ActivityManager: Slow operation: 202ms so far, now at startProcess: asking zygote to start proc
+11-12 23:01:41.297  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10007; state: ENABLED
+11-12 23:01:41.313  2490  2490 D Zygote  : Forked child process 15677
+11-12 23:01:41.316  2958  3023 W ActivityManager: Slow operation: 222ms so far, now at startProcess: returned from zygote!
+11-12 23:01:41.316  2958  3023 W ActivityManager: Slow operation: 222ms so far, now at startProcess: done updating battery stats
+11-12 23:01:41.316  2958  3023 W ActivityManager: Slow operation: 222ms so far, now at startProcess: building log message
+11-12 23:01:41.316  2958  3023 I ActivityManager: Start proc 15677:com.google.android.tvrecommendations/u0a7 for service {com.google.android.tvrecommendations/com.google.android.tvrecommendations.NotificationsService}
+11-12 23:01:41.316  2958  3023 W ActivityManager: Slow operation: 222ms so far, now at startProcess: starting to update pids map
+11-12 23:01:41.317  2958  3023 W ActivityManager: Slow operation: 223ms so far, now at startProcess: done updating pids map
+11-12 23:01:41.514  2958  3021 E PackageManager: Optimistic bind failed.
+11-12 23:01:41.514  2958  3021 E PackageManager: java.util.concurrent.TimeoutException: [Optimistic Bind] Didn't bind to resolver in time!
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.waitForBindLocked(InstantAppResolverConnection.java:160)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.bind(InstantAppResolverConnection.java:225)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at com.android.server.pm.InstantAppResolverConnection.lambda$optimisticBind$0$InstantAppResolverConnection(InstantAppResolverConnection.java:255)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at com.android.server.pm.-$$Lambda$InstantAppResolverConnection$D-JKXi4qrYjnPQMOwj8UtfZenps.run(Unknown Source:2)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at android.os.Handler.handleCallback(Handler.java:938)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:41.514  2958  3021 E PackageManager: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-12 23:01:41.712  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:41.720 15677 15677 E recommendation: Not starting debugger since process cannot load the jdwp agent.
+11-12 23:01:41.720 15671 15671 I chatty  : uid=10002(com.google.android.gms) expire 4 lines
+11-12 23:01:41.891  2958  3436 W ActivityManager: Slow operation: 62ms so far, now at attachApplicationLocked: immediately after bindApplication
+11-12 23:01:41.892  2958  3436 W ActivityManager: Slow operation: 64ms so far, now at attachApplicationLocked: after updateLruProcessLocked
+11-12 23:01:41.962  2958  3436 W ActivityManager: Slow operation: 134ms so far, now at attachApplicationLocked: after mServices.attachApplicationLocked
+11-12 23:01:42.021  2958  3010 W Looper  : Drained
+11-12 23:01:42.150  2958  3008 W Looper  : Slow dispatch took 118ms android.fg h=com.android.server.AppStateTracker$MyHandler c=null m=0
+11-12 23:01:42.478 15677 15677 W recommendation: JIT profile information will not be recorded: profile file does not exist.
+11-12 23:01:42.479 15677 15677 W recommendation: JIT profile information will not be recorded: profile file does not exist.
+11-12 23:01:42.791 15677 15677 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-12 23:01:42.851 15677 15677 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-12 23:01:42.853  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362480,7669859381,-;lowmemorykiller: Killing 'chil_android_tv' (15544) (tgid 15544), adj 0,\x0a   to free 347012kB on behalf of 'gle.android.gms' (15671) because\x0a   cache 18036kB is below limit 4096kB for oom_score_adj 0\x0a   Free memory is -8208kB above reserved
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 4,362481,7669859390,-;   Total_free = -4980kB, free_cma=5820kB, Totalreserve_pages = 31476kB, MAPPED = 18044kB
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362482,7669859394,-;lowmemorykiller: total_free is -1245, other_free is -2052, free_cma is 1455
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362483,7669859399,-;lowmemorykiller: other_file is 4509, active_file is 2247, inactive_file is 2247\x0a\x0a
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362484,7669861122,-;lowmemorykiller: Killing 'HeapTaskDaemon' (15556) (tgid 15544), adj 0,\x0a   to free 347016kB on behalf of '1.io' (15570) because\x0a   cache 17660kB is below limit 4096kB for oom_score_adj 0\x0a   Free memory is -8448kB above reserved
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 4,362485,7669861132,-;   Total_free = -5508kB, free_cma=5896kB, Totalreserve_pages = 31476kB, MAPPED = 17968kB
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362486,7669861137,-;lowmemorykiller: total_free is -1377, other_free is -2112, free_cma is 1474
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362487,7669861141,-;lowmemorykiller: other_file is 4415, active_file is 2206, inactive_file is 2172\x0a\x0a
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362488,7669865786,-;lowmemorykiller: Killing 'ReferenceQueueD' (15557) (tgid 15544), adj 0,\x0a   to free 348596kB on behalf of 'lmkd' (2338) because\x0a   cache 17672kB is below limit 4096kB for oom_score_adj 0\x0a   Free memory is -8496kB above reserved
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 4,362489,7669865794,-;   Total_free = -5544kB, free_cma=5896kB, Totalreserve_pages = 31476kB, MAPPED = 17968kB
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362490,7669865798,-;lowmemorykiller: total_free is -1386, other_free is -2124, free_cma is 1474
+11-12 23:01:43.350  2841  2841 D MTK_KL  : 6,362491,7669865803,-;lowmemorykiller: other_file is 4418, active_file is 2206, inactive_file is 2172\x0a\x0a
+11-12 23:01:43.363  2841  2841 D MTK_KL  : 6,362492,7669878364,-;lowmemorykiller: Killing '1.io' (15570) (tgid 15544), adj 0,\x0a   to free 347904kB on behalf of '1.io' (15570) because\x0a   cache 18304kB is below limit 4096kB for oom_score_adj 0\x0a   Free memory is -8308kB above reserved
+11-12 23:01:43.363  2841  2841 D MTK_KL  : 4,362493,7669878373,-;   Total_free = -5020kB, free_cma=6120kB, Totalreserve_pages = 31476kB, MAPPED = 18196kB
+11-12 23:01:43.363  2841  2841 D MTK_KL  : 6,362494,7669878378,-;lowmemorykiller: total_free is -1255, other_free is -2077, free_cma is 1530
+11-12 23:01:43.363  2841  2841 D MTK_KL  : 6,362495,7669878382,-;lowmemorykiller: other_file is 4576, active_file is 2224, inactive_file is 2309\x0a\x0a
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 6,362496,7669955747,-;lowmemorykiller: Killing 'gle.android.gms' (15671) (tgid 15671), adj 0,\x0a   to free 9940kB on behalf of 'Binder:2958_E' (4275) because\x0a   cache 17948kB is below limit 4096kB for oom_score_adj 0\x0a   Free memory is -6820kB above reserved
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 4,362497,7669955756,-;   Total_free = -5196kB, free_cma=7504kB, Totalreserve_pages = 31476kB, MAPPED = 16828kB
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 6,362498,7669955760,-;lowmemorykiller: total_free is -1299, other_free is -1705, free_cma is 1876
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 6,362499,7669955765,-;lowmemorykiller: other_file is 4487, active_file is 2205, inactive_file is 2223\x0a\x0a
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 6,362500,7669956094,-;lowmemorykiller: Killing 'HeapTaskDaemon' (15694) (tgid 15671), adj 0,\x0a   to free 11320kB on behalf of 'Binder:2958_E' (4275) because\x0a   cache 17952kB is below limit 4096kB for oom_score_adj 0\x0a   Free memory is -6820kB above reserved
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 4,362501,7669956101,-;   Total_free = -5192kB, free_cma=7504kB, Totalreserve_pages = 31476kB, MAPPED = 16828kB
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 6,362502,7669956105,-;lowmemorykiller: total_free is -1298, other_free is -1705, free_cma is 1876
+11-12 23:01:43.439  2841  2841 D MTK_KL  : 6,362503,7669956110,-;lowmemorykiller: other_file is 4488, active_file is 2205, inactive_file is 2223\x0a\x0a
+11-12 23:01:43.503  2490  2490 I Zygote  : Process 15671 exited due to signal 9 (Killed)
+11-12 23:01:43.527  2958  5926 I ActivityManager: Process com.google.android.gms (pid 15671) has died: fg  BFGS
+11-12 23:01:43.593  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentBoundBrokerService in 27361ms for connection
+11-12 23:01:43.593  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.geocode.GeocodeService in 160764ms for connection
+11-12 23:01:43.596  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.location.persistent.LocationPersistentService in 290072ms for start-requested
+11-12 23:01:43.596  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.nts.SchedulerService in 330072ms for start-requested
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.stats.eastworld.EastworldService in 370068ms for start-requested
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.network.NetworkLocationService in 410068ms for connection
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.GoogleLocationManagerService in 450068ms for start-requested
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.chimera.PersistentDirectBootAwareApiService in 490068ms for connection
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.clearcut.debug.ClearcutDebugDumpService in 530068ms for start-requested
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.HardwareArProviderService in 570064ms for connection
+11-12 23:01:43.597  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.common.stats.GmsCoreStatsService in 610064ms for start-requested
+11-12 23:01:43.598  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.gcm.GcmService in 650064ms for start-requested
+11-12 23:01:43.598  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.fused.FusedLocationService in 690064ms for connection
+11-12 23:01:43.598  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.play.integrity.api.service.IntegrityApiPersistentService in 730064ms for start-requested
+11-12 23:01:43.598  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.auth.setup.devicesignals.LockScreenService in 770060ms for start-requested
+11-12 23:01:43.598  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/.fido.authenticator.service.AuthenticatorService in 810060ms for start-requested
+11-12 23:01:43.598  2958  5926 W ActivityManager: Scheduling restart of crashed service com.google.android.gms/com.google.android.location.internal.server.GoogleLocationService in 850060ms for start-requested
+11-12 23:01:43.649  2490  2490 I Zygote  : Process 15544 exited due to signal 9 (Killed)
+11-12 23:01:43.649  2958  7980 I WindowManager: WIN DEATH: Window{c98ebb3 u0 com.example.leichil_android_tv/com.example.leichil_android_tv.MainActivity}
+11-12 23:01:43.659  2958  3448 I chatty  : uid=1000(system) InputDispatcher expire 19 lines
+11-12 23:01:43.693  2958  7980 I chatty  : uid=1000(system) Binder:2958_1F expire 2 lines
+11-12 23:01:43.805  2651  3063 D hwcomposer: HWComposerDisplayHalMiOsd::hwcMiDisplay: Layer[0]: hide!!!!
+11-12 23:01:43.835  2958  4069 I ActivityManager: Process com.example.leichil_android_tv (pid 15544) has died: fg  TOP 
+11-12 23:01:43.840  2958  4069 W ActivityTaskManager: Force removing ActivityRecord{b91f899 u0 com.example.leichil_android_tv/.MainActivity t6584}: app died, no saved state
+11-12 23:01:43.883  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:43.886  2958  3012 W ActivityManager: setHasOverlayUi called on unknown pid: 15544
+11-12 23:01:43.886  2958  3010 W Looper  : Slow dispatch took 278ms android.ui h=com.android.server.am.ActivityManagerService$UiHandler c=null m=53
+11-12 23:01:43.902  2958  3012 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10055; state: DISABLED
+11-12 23:01:43.903  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10055; state: ENABLED
+11-12 23:01:43.936  2490  2490 D Zygote  : Forked child process 15716
+11-12 23:01:43.942  2958  3023 I ActivityManager: Start proc 15716:com.homwee.aipont/u0a55 for top-activity {com.homwee.aipont/com.homwee.aipont.activity.ChannelMainActivity}
+11-12 23:01:43.978 15716 15716 I chatty  : uid=10055(com.homwee.aipont) expire 12 lines
+11-12 23:01:44.011  2958  4277 W OomAdjuster: Fallback pre-set sched group to default: not expected top priority
+11-12 23:01:44.047  2958  3012 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10026; state: DISABLED
+11-12 23:01:44.047  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10026; state: ENABLED
+11-12 23:01:44.050  2958  6506 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10002; state: DISABLED
+11-12 23:01:44.059  2490  2490 D Zygote  : Forked child process 15736
+11-12 23:01:44.062  2958  3023 I ActivityManager: Start proc 15736:com.google.android.tvlauncher/u0a26 for activity {com.google.android.tvlauncher/com.google.android.tvlauncher.MainActivity}
+11-12 23:01:44.063  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10002; state: ENABLED
+11-12 23:01:44.076  2490  2490 D Zygote  : Forked child process 15742
+11-12 23:01:44.080  2958  3023 I ActivityManager: Start proc 15742:com.google.process.gservices/u0a2 for content provider {com.google.android.gsf/com.google.android.gsf.gservices.GservicesProvider}
+11-12 23:01:44.087 15736 15736 I chatty  : uid=10026(com.google.android.tvlauncher) expire 10 lines
+11-12 23:01:44.171  2841  2841 D MTK_KL  : 6,362504,7670689727,-;input: input_get_disposition:EV_MSC btntskey=0x0 code=0x4 value=0xc0045 bus=5
+11-12 23:01:44.171  2841  2841 D MTK_KL  : 7,362505,7670689753,-;[ir_boost] starts
+11-12 23:01:44.171  2841  2841 D MTK_KL  : 7,362506,7670689761,-;[dvfs_boost] here comes a client id = 192 and cpu_freq_in_khz = 1300000 cpu:0
+11-12 23:01:44.206  2841  2841 D MTK_KL  : 7,362507,7670722149,-;\x1b[35mFunction = Mdrv_CPU_T_sensor_Check_callback, Line = 2041, due to boost, change t_sensor_max_freq from 1450000 to 1300000\x1b[m
+11-12 23:01:44.207  2841  2841 D MTK_KL  : 7,362508,7670722198,-;\x1b[35mFunction = Mdrv_CPU_T_sensor_Check_callback, Line = 2041, due to boost, change t_sensor_max_freq from 1450000 to 0\x1b[m
+11-12 23:01:44.207  2841  2841 D MTK_KL  : 7,362509,7670722205,-;\x1b[35mFunction = Mdrv_CPU_T_sensor_Check_callback, Line = 2041, due to boost, change t_sensor_max_freq from 1450000 to 0\x1b[m
+11-12 23:01:44.207  2841  2841 D MTK_KL  : 7,362510,7670722210,-;\x1b[35mFunction = Mdrv_CPU_T_sensor_Check_callback, Line = 2041, due to boost, change t_sensor_max_freq from 1450000 to 0\x1b[m
+11-12 23:01:44.302  2841  2841 D MTK_KL  : 6,362511,7670819112,-;input: input_get_disposition:EV_MSC btntskey=0x0 code=0x4 value=0xc0045 bus=5
+11-12 23:01:44.348 15742 15742 I chatty  : uid=10002(com.google.android.gms) com.google.process.gservices expire 6 lines
+11-12 23:01:44.547  2958  4277 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10002; state: DISABLED
+11-12 23:01:44.548  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10002; state: ENABLED
+11-12 23:01:44.562  2490  2490 D Zygote  : Forked child process 15786
+11-12 23:01:44.565  2958  3023 I ActivityManager: Start proc 15786:com.google.android.gms/u0a2 for service {com.google.android.gms/com.google.android.gms.chimera.PersistentApiService}
+11-12 23:01:44.593 15786 15786 I chatty  : uid=10002(com.google.android.gms) expire 62 lines
+11-12 23:01:44.659  2958  6228 D CompatibilityChangeReporter: Compat change id reported: 136274596; UID 10026; state: ENABLED
+11-12 23:01:44.668 15716 15716 W System.err: 	at android.app.Activity.performCreate(Activity.java:7984)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1309)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3422)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3601)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:85)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2066)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:44.669 15716 15716 W System.err: 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+11-12 23:01:44.669 15716 15716 W System.err: 	at java.lang.reflect.Method.invoke(Native Method)
+11-12 23:01:44.669 15716 15716 W System.err: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+11-12 23:01:44.669 15716 15716 W System.err: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+11-12 23:01:44.674 15716 15716 I wyzzz   : catchjava.lang.NullPointerException: Attempt to invoke virtual method 'java.util.Map com.homwee.aipont.channel.IniFile$Section.getValues()' on a null object reference
+11-12 23:01:44.674 15716 15716 W System.err: java.lang.NullPointerException: Attempt to invoke virtual method 'java.util.Map com.homwee.aipont.channel.IniFile$Section.getValues()' on a null object reference
+11-12 23:01:44.674 15716 15716 W System.err: 	at com.homwee.aipont.channel.util.File.getCustomizationFuncDataRuAppAndroidP(File.java:29)
+11-12 23:01:44.674 15716 15716 W System.err: 	at com.homwee.aipont.activity.ChannelMainActivity.initChannel(ChannelMainActivity.java:404)
+11-12 23:01:44.674 15716 15716 W System.err: 	at com.homwee.aipont.activity.ChannelMainActivity.init(ChannelMainActivity.java:359)
+11-12 23:01:44.674 15716 15716 W System.err: 	at com.homwee.aipont.activity.ChannelMainActivity.onCreate(ChannelMainActivity.java:114)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.Activity.performCreate(Activity.java:8000)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.Activity.performCreate(Activity.java:7984)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1309)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3422)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3601)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:85)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+11-12 23:01:44.674 15716 15716 W System.err: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+11-12 23:01:44.675 15716 15716 W System.err: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2066)
+11-12 23:01:44.675 15716 15716 W System.err: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+11-12 23:01:44.675 15716 15716 W System.err: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:44.675 15716 15716 W System.err: 	at android.app.ActivityThread.main(ActivityThread.java:7656)
+11-12 23:01:44.675 15716 15716 W System.err: 	at java.lang.reflect.Method.invoke(Native Method)
+11-12 23:01:44.675 15716 15716 W System.err: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+11-12 23:01:44.675 15716 15716 W System.err: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:947)
+11-12 23:01:44.675 15716 15716 I mainwyz : can go here2
+11-12 23:01:44.675 15716 15716 I mainwyz : can go here5null
+11-12 23:01:44.687 15716 15716 W PhoneWindow: Previously focused view reported id 2131296524 during save, but can't be found during restore.
+11-12 23:01:44.829 15677 15677 I TetheringManager: registerTetheringEventCallback:com.google.android.tvrecommendations
+11-12 23:01:44.888  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:44.967  2340  2340 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+11-12 23:01:44.967 15716 15778 I Gralloc4: mapper 4.x is not supported
+11-12 23:01:44.970  2340  2340 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+11-12 23:01:44.970 15716 15778 W Gralloc3: mapper 3.x is not supported
+11-12 23:01:44.992  2958  6506 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = androidstatsTag = *walarm*:*job.deadline* @10875642 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:44.995  2958  6506 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = androidstatsTag = *walarm*:*job.deadline* @7731382 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:45.031 15716 15778 D gralloc : [ion_open:103] mma_open()
+11-12 23:01:45.031 15716 15778 D gralloc : [mma_open:49] 
+11-12 23:01:45.031 15716 15778 D gralloc : [ion_open:116] mma_open() failed! status=-19 errno=2
+11-12 23:01:45.142  2841  2841 D MTK_KL  : 31,362512,7671659442,-;logd: logdr: UID=2000 GID=2000 PID=15840 n tail=0 logMask=99 pid=0 start=0ns timeout=0ns
+11-12 23:01:45.199  2841  2841 D MTK_KL  : 7,362513,7671714051,-;[ir_boost] stops
+11-12 23:01:45.199  2841  2841 D MTK_KL  : 7,362514,7671714066,-;[dvfs_boost] here comes a client id = 192 and cpu_freq_in_khz = 0 cpu:0
+11-12 23:01:45.235  2958  2967 I chatty  : uid=1000(system) HeapTaskDaemon expire 1 line
+11-12 23:01:45.450 15677 15677 W JobInfo : Requested flex +3m0s0ms for job 100 is too small; raising to +1h12m0s0ms
+11-12 23:01:45.482 15677 15677 W recommendation: Accessing hidden method Landroid/app/job/JobParameters;->getStopReason()I (greylist-max-o, linking, denied)
+11-12 23:01:45.596 15677 15677 D NowPlayingListener: setRemoteControlListener: dqf@b422c2e
+11-12 23:01:45.598 15677 15677 D NowPlayingListener: onActiveSessionsChanged() called with: controllers = [[]], lastActiveMediaController = null, lastUpdatedAppPackageName = null
+11-12 23:01:45.598 15677 15677 D NowPlayingManager: onClientChanged() called
+11-12 23:01:45.599 15677 15677 D NowPlayingManager: A notification for Now Playing Card has been canceled
+11-12 23:01:45.601  2958  2958 V NotificationListeners: 0 notification listener service connected: ComponentInfo{com.google.android.tvrecommendations/com.google.android.tvrecommendations.NotificationsService}
+11-12 23:01:45.625  2958  4277 I chatty  : uid=1000(system) Binder:2958_10 expire 1 line
+11-12 23:01:45.774 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.android.deskclock	,appName: Clock	,icon: android.graphics.drawable.BitmapDrawable@1964647	,banner: android.graphics.drawable.BitmapDrawable@84fbe74
+11-12 23:01:45.800 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.homwee.help	,appName: Help	,icon: android.graphics.drawable.BitmapDrawable@28afc12	,banner: android.graphics.drawable.BitmapDrawable@5e6ffe3
+11-12 23:01:45.836 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: in.startv.hotstar	,appName: Hotstar	,icon: android.graphics.drawable.BitmapDrawable@918c75e	,banner: android.graphics.drawable.BitmapDrawable@cffb73f
+11-12 23:01:45.874 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.homwee.howtocast	,appName: How to Cast	,icon: android.graphics.drawable.BitmapDrawable@d82555	,banner: android.graphics.drawable.BitmapDrawable@c25fb6a
+11-12 23:01:45.891  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:45.905 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.example.leichil_android_tv	,appName: Leichil TV	,icon: android.graphics.drawable.BitmapDrawable@5c1f8f8	,banner: android.graphics.drawable.BitmapDrawable@542c1d1
+11-12 23:01:45.956 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.mediatek.wwtv.tvcenter	,appName: Live TV	,icon: android.graphics.drawable.BitmapDrawable@899aca4	,banner: android.graphics.drawable.BitmapDrawable@6e0aa0d
+11-12 23:01:45.982 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.homwee.mmp.fileexplorer	,appName: Media	,icon: android.graphics.drawable.BitmapDrawable@287a7d3	,banner: android.graphics.drawable.BitmapDrawable@916ef10
+11-12 23:01:46.046 15786 15808 I chatty  : uid=10002(com.google.android.gms) Binder:15786_4 expire 2 lines
+11-12 23:01:46.077 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.mfdctv	,appName: mfdcstv	,icon: android.graphics.drawable.BitmapDrawable@69aee2f	,banner: android.graphics.drawable.BitmapDrawable@be3ec3c
+11-12 23:01:46.094 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.homwee.multiscreenshare	,appName: Multi-Screen Share	,icon: android.graphics.drawable.BitmapDrawable@9f23e4b	,banner: android.graphics.drawable.BitmapDrawable@4219028
+11-12 23:01:46.101 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.netflix.ninja	,appName: Netflix	,icon: android.graphics.drawable.BitmapDrawable@c247427	,banner: android.graphics.drawable.BitmapDrawable@41386d4
+11-12 23:01:46.143 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.google.android.play.games	,appName: Google Play Games	,icon: android.graphics.drawable.AdaptiveIconDrawable@b915779	,banner: android.graphics.drawable.BitmapDrawable@61f4cbe
+11-12 23:01:46.197 15786 15915 I chatty  : uid=10002(com.google.android.gms) highpool[0] expire 7 lines
+11-12 23:01:46.238 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.google.android.videos	,appName: Google Play Movies & TV	,icon: android.graphics.drawable.BitmapDrawable@46f235	,banner: android.graphics.drawable.BitmapDrawable@5ff76ca
+11-12 23:01:46.287 15786 15799 I chatty  : uid=10002(com.google.android.gms) HeapTaskDaemon expire 4 lines
+11-12 23:01:46.324 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.android.vending	,appName: Google Play Store	,icon: android.graphics.drawable.BitmapDrawable@817cb1	,banner: android.graphics.drawable.BitmapDrawable@d063596
+11-12 23:01:46.396 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.amazon.amazonvideo.livingroom	,appName: Prime Video	,icon: android.graphics.drawable.AdaptiveIconDrawable@de81522	,banner: android.graphics.drawable.BitmapDrawable@c8d8bb3
+11-12 23:01:46.422 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.google.android.youtube.tv	,appName: YouTube	,icon: android.graphics.drawable.BitmapDrawable@16616e	,banner: android.graphics.drawable.BitmapDrawable@44b300f
+11-12 23:01:46.457 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.google.android.youtube.tvmusic	,appName: YouTube Music	,icon: android.graphics.drawable.BitmapDrawable@ecb267a	,banner: android.graphics.drawable.BitmapDrawable@e94be2b
+11-12 23:01:46.485 15716 15804 I AI_PONT : =====doInBackground(ModelMain.java:129)=====:packageName: com.graymatrix.did	,appName: ZEE5	,icon: android.graphics.drawable.BitmapDrawable@cd53046	,banner: android.graphics.drawable.BitmapDrawable@79f1207
+11-12 23:01:46.491 15786 15805 I chatty  : uid=10002(com.google.android.gms) Binder:15786_2 expire 1 line
+11-12 23:01:46.498 15716 15716 I AI_PONT : =====onShowApps(ChannelMainActivity.java:279)=====:showApps
+11-12 23:01:46.498 15716 15716 I AI_PONT : =====onShowRecommend(ChannelMainActivity.java:284)=====:
+11-12 23:01:46.542 15786 15917 I chatty  : uid=10002(com.google.android.gms) lowpool[1] expire 5 lines
+11-12 23:01:46.558 15716 15716 I TetheringManager: registerTetheringEventCallback:com.homwee.aipont
+11-12 23:01:46.791 15716 15716 I AI_PONT : =====onEventMainThread(PresenterMain.java:66)=====:
+11-12 23:01:46.792 15716 15716 I AI_PONT : =====onItemFocused(ChannelMainActivity.java:332)=====:position: 0
+11-12 23:01:46.807 15716 15716 W View    : requestLayout() improperly called by com.homwee.aipont.views.MarqueeTextView{4d32ef0 V.ED..... ......ID 61,102-115,124 #7f09019b app:id/tv_item_activity_main_recycler_apps} during layout: running second layout pass
+11-12 23:01:46.888  2958  5919 D ConnectivityService: requestNetwork for uid/pid:10026/15736 NetworkRequest [ TRACK_DEFAULT id=110, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ]
+11-12 23:01:46.890  2958  3499 D ConnectivityService: NetReassign [110 : null → 100]
+11-12 23:01:46.892  2958  3484 I chatty  : uid=1000(system) WifiHandlerThre expire 6 lines
+11-12 23:01:46.895  2958  3528 I chatty  : uid=1000(system) EthernetService expire 2 lines
+11-12 23:01:46.896 15716 15716 I ViewTarget: Glide treats LayoutParams.WRAP_CONTENT as a request for an image the size of this device's screen dimensions. If you want to load the original image and are ok with the corresponding memory cost and OOMs (depending on the input size), use .override(Target.SIZE_ORIGINAL). Otherwise, use LayoutParams.MATCH_PARENT, set layout_width and layout_height to fixed dimension, or use .override() with fixed dimensions.
+11-12 23:01:46.902  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:46.905 15716 15716 I ViewTarget: Glide treats LayoutParams.WRAP_CONTENT as a request for an image the size of this device's screen dimensions. If you want to load the original image and are ok with the corresponding memory cost and OOMs (depending on the input size), use .override(Target.SIZE_ORIGINAL). Otherwise, use LayoutParams.MATCH_PARENT, set layout_width and layout_height to fixed dimension, or use .override() with fixed dimensions.
+11-12 23:01:46.941  2958  4277 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10002; state: DISABLED
+11-12 23:01:46.942  2958  3023 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10002; state: ENABLED
+11-12 23:01:46.982  2490  2490 D Zygote  : Forked child process 15941
+11-12 23:01:46.988  2958  3023 I ActivityManager: Start proc 15941:com.google.process.gapps/u0a2 for content provider {com.google.android.gsf/com.google.android.gsf.settings.GoogleSettingsProvider}
+11-12 23:01:47.015 15941 15941 I chatty  : uid=10002(com.google.android.gms) com.google.process.gapps expire 7 lines
+11-12 23:01:47.309  2958  4277 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 1000; state: DISABLED
+11-12 23:01:47.339 15786 15919 I chatty  : uid=10002(com.google.android.gms) lowpool[2] expire 2 lines
+11-12 23:01:47.355  2958  5919 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.wearable.BIND pkg=com.google.android.gms } U=0: not found
+11-12 23:01:47.357  2340  2340 I hwservicemanager: Notifying vendor.mediatek.tv.mtktvfactory@1.0::IMtkTvFApiInformation/default they have clients: 0
+11-12 23:01:47.358  2340  2340 I hwservicemanager: Notifying vendor.mediatek.tv.mtktvfactory@1.0::IMtkTvFApiManager/default they have clients: 0
+11-12 23:01:47.358  2340  2340 I hwservicemanager: Notifying vendor.mediatek.tv.mtktvfactory@1.0::IMtkTvFApiSystem/default they have clients: 0
+11-12 23:01:47.359  2958  5919 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@8a7a142
+11-12 23:01:47.360 15786 15897 I chatty  : uid=10002(com.google.android.gms) GoogleApiHandle expire 4 lines
+11-12 23:01:47.369  2490  2490 D Zygote  : Forked child process 15969
+11-12 23:01:47.372  2958  3023 W ActivityManager: Slow operation: 63ms so far, now at startProcess: returned from zygote!
+11-12 23:01:47.373  2958  3023 W ActivityManager: Slow operation: 64ms so far, now at startProcess: done updating battery stats
+11-12 23:01:47.373  2958  3023 W ActivityManager: Slow operation: 64ms so far, now at startProcess: building log message
+11-12 23:01:47.373  2958  3023 I ActivityManager: Start proc 15969:com.google.android.leanbacklauncher.partnercustomizer/1000 for content provider {com.google.android.leanbacklauncher.partnercustomizer/com.google.android.leanbacklauncher.partnercustomizer.ConfigurationProvider}
+11-12 23:01:47.373  2958  3023 W ActivityManager: Slow operation: 64ms so far, now at startProcess: starting to update pids map
+11-12 23:01:47.374  2958  3023 W ActivityManager: Slow operation: 65ms so far, now at startProcess: done updating pids map
+11-12 23:01:47.383 15426 15426 I vendor.mediatek.tv.mtktvfactory@1.0-service: Process has 2 (of 10 available) client(s) in use after notification vendor.mediatek.tv.mtktvfactory@1.0::IMtkTvFApiInformation has clients: 0
+11-12 23:01:47.387 15426 15426 I vendor.mediatek.tv.mtktvfactory@1.0-service: Process has 1 (of 10 available) client(s) in use after notification vendor.mediatek.tv.mtktvfactory@1.0::IMtkTvFApiManager has clients: 0
+11-12 23:01:47.390 15426 15426 I vendor.mediatek.tv.mtktvfactory@1.0-service: Process has 0 (of 10 available) client(s) in use after notification vendor.mediatek.tv.mtktvfactory@1.0::IMtkTvFApiSystem has clients: 0
+11-12 23:01:47.390 15426 15426 I vendor.mediatek.tv.mtktvfactory@1.0-service: Trying to exit HAL. No clients in use for any service in process.
+11-12 23:01:47.393  2340  2340 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+11-12 23:01:47.408  2340  2340 I chatty  : uid=1000(system) hwservicemanage identical 9 lines
+11-12 23:01:47.408  2340  2340 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+11-12 23:01:47.408 15426 15426 I vendor.mediatek.tv.mtktvfactory@1.0-service: Unregistered all clients and exiting
+11-12 23:01:47.409 15969 15969 E rtnercustomize: Not starting debugger since process cannot load the jdwp agent.
+11-12 23:01:47.421 15786 15803 I chatty  : uid=10002(com.google.android.gms) Binder:15786_1 expire 4 lines
+11-12 23:01:47.431  2841  2841 D MTK_KL  : 4,362515,7673946578,-;_MDrv_MBXIO_FASYNC is invoked
+11-12 23:01:47.431  2841  2841 D MTK_KL  : 4,362516,7673946590,-;<---------MBX DRIVER CLOSE
+11-12 23:01:47.447  2841  2841 D MTK_KL  : 14,362517,7673964212,-;init: Service 'tv-mtktvfactory-1-0' (pid 15426) exited with status 0 oneshot service took 150.567993 seconds in background
+11-12 23:01:47.447  2841  2841 D MTK_KL  : 14,362518,7673964392,-;init: Sending signal 9 to service 'tv-mtktvfactory-1-0' (pid 15426) process group...
+11-12 23:01:47.455  2841  2841 D MTK_KL  : 14,362519,7673971607,-;libprocessgroup: Successfully killed process cgroup uid 0 pid 15426 in 6ms
+11-12 23:01:47.471 15969 15969 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+11-12 23:01:47.495 15786 15926 I chatty  : uid=10002(com.google.android.gms) highpool[1] expire 2 lines
+11-12 23:01:47.513  2958  3999 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-12 23:01:47.529 15969 15969 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-12 23:01:47.529 15969 15969 D NetworkSecurityConfig: No Network Security Config specified, using platform default
+11-12 23:01:47.551 15969 15969 I TetheringManager: registerTetheringEventCallback:com.google.android.leanbacklauncher.partnercustomizer
+11-12 23:01:47.570 15969 15969 E PartnerReceiver: intent, android.net.conn.CONNECTIVITY_CHANGE
+11-12 23:01:47.573 15969 15993 E ConfigurationProvider: openFile content://tvlauncher.apprecs/app_recommendations,r
+11-12 23:01:47.604 15786 15807 I chatty  : uid=10002(com.google.android.gms) Binder:15786_3 expire 1 line
+11-12 23:01:47.607 15969 15993 I wyzzz   : catchjava.lang.NullPointerException: Attempt to invoke virtual method 'java.util.Map com.google.android.leanbacklauncher.partnercustomizer.IniFile$Section.getValues()' on a null object reference
+11-12 23:01:47.607 15969 15993 W System.err: java.lang.NullPointerException: Attempt to invoke virtual method 'java.util.Map com.google.android.leanbacklauncher.partnercustomizer.IniFile$Section.getValues()' on a null object reference
+11-12 23:01:47.608 15969 15993 W System.err: 	at com.google.android.leanbacklauncher.partnercustomizer.ConfigurationProvider.getCustomizationFuncData(ConfigurationProvider.java:370)
+11-12 23:01:47.608 15969 15993 W System.err: 	at com.google.android.leanbacklauncher.partnercustomizer.ConfigurationProvider.openFile(ConfigurationProvider.java:74)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.content.ContentProvider.openAssetFile(ContentProvider.java:2004)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.content.ContentProvider.openTypedAssetFile(ContentProvider.java:2186)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.content.ContentProvider.openTypedAssetFile(ContentProvider.java:2253)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.content.ContentProvider$Transport.openTypedAssetFile(ContentProvider.java:553)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:327)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.os.Binder.execTransactInternal(Binder.java:1154)
+11-12 23:01:47.608 15969 15993 W System.err: 	at android.os.Binder.execTransact(Binder.java:1123)
+11-12 23:01:47.615  2958  3022 W BroadcastQueue: Permission Denial: broadcasting Intent { act=android.net.wifi.STATE_CHANGE flg=0x4000010 (has extras) } from null (pid=-1, uid=-1) requires com.google.android.gms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION due to registered receiver BroadcastFilter{5602dbb 10002/u0 ReceiverList{b875a4a 15786 com.google.android.gms/10002/u0 remote:43a33b5}}
+11-12 23:01:47.623 15786 15940 I chatty  : uid=10002(com.google.android.gms) highpool[5] expire 4 lines
+11-12 23:01:47.637 15969 15991 E ConfigurationProvider: openFile content://tvlauncher.widget/widget,null
+11-12 23:01:47.643 15786 15924 I chatty  : uid=10002(com.google.android.gms) lowpool[3] expire 1 line
+11-12 23:01:47.646  2958  3022 W BroadcastQueue: Permission Denial: broadcasting Intent { act=android.net.wifi.STATE_CHANGE flg=0x4000010 (has extras) } from null (pid=-1, uid=-1) requires com.google.android.gms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION due to registered receiver BroadcastFilter{7919a69 10002/u0 ReceiverList{588f4f0 15786 com.google.android.gms/10002/u0 remote:5c89933}}
+11-12 23:01:47.658  2958  7980 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.wearable.BIND pkg=com.google.android.gms } U=0: not found
+11-12 23:01:47.661  2958  4277 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@de9958f
+11-12 23:01:47.663 15786 15960 I chatty  : uid=10002(com.google.android.gms) lowpool[4] expire 1 line
+11-12 23:01:47.674 15786 15930 I chatty  : uid=10002(com.google.android.gms) highpool[2] expire 1 line
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: Failed to send file content://tvlauncher.apprecs/app_recommendations
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.io.InputStream.read(byte[])' on a null object reference
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at com.google.android.leanbacklauncher.partnercustomizer.ConfigurationProvider$1.writeDataToPipe(ConfigurationProvider.java:241)
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at android.content.ContentProvider$1.doInBackground(ContentProvider.java:2304)
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at android.os.AsyncTask$3.call(AsyncTask.java:394)
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+11-12 23:01:47.685 15969 16000 E ConfigurationProvider: 	at java.lang.Thread.run(Thread.java:923)
+11-12 23:01:47.712 15786 15959 I chatty  : uid=10002(com.google.android.gms) FlpThread expire 2 lines
+11-12 23:01:47.713 15786 15906 I chatty  : uid=10002(com.google.android.gms) Binder:15786_6 expire 10 lines
+11-12 23:01:47.796  2958  3008 I chatty  : uid=1000(system) android.fg expire 2 lines
+11-12 23:01:47.907  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:47.936  2958  3499 D ConnectivityService: NetReassign [no changes]
+11-12 23:01:47.946  2958  6228 D ConnectivityService: requestNetwork for uid/pid:10002/15786 NetworkRequest [ TRACK_DEFAULT id=112, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ]
+11-12 23:01:47.947  2958  3499 D ConnectivityService: NetReassign [112 : null → 100]
+11-12 23:01:48.161  2958  5919 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.wearable.BIND pkg=com.google.android.gms } U=0: not found
+11-12 23:01:48.164  2958  5919 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@ae0b347
+11-12 23:01:48.245 15736 15754 I chatty  : uid=10026(com.google.android.tvlauncher) HeapTaskDaemon expire 1 line
+11-12 23:01:48.286 15736 15875 I chatty  : uid=10026(com.google.android.tvlauncher) AsyncTask #3 expire 2 lines
+11-12 23:01:48.420 15786 15962 I chatty  : uid=10002(com.google.android.gms) lowpool[5] expire 1 line
+11-12 23:01:48.435 15786 16020 I chatty  : uid=10002(com.google.android.gms) lowpool[6] expire 1 line
+11-12 23:01:48.664 15736 15754 I chatty  : uid=10026(com.google.android.tvlauncher) HeapTaskDaemon expire 1 line
+11-12 23:01:48.677 15677 16023 D CompatibilityChangeReporter: Compat change id reported: 150939131; UID 10007; state: ENABLED
+11-12 23:01:48.683 15736 15759 I chatty  : uid=10026(com.google.android.tvlauncher) Binder:15736_2 expire 1 line
+11-12 23:01:48.742 15786 15786 I chatty  : uid=10002(com.google.android.gms) expire 3 lines
+11-12 23:01:48.816 15736 15736 I chatty  : uid=10026(com.google.android.tvlauncher) expire 1 line
+11-12 23:01:48.831 15786 15919 I chatty  : uid=10002(com.google.android.gms) lowpool[2] expire 1 line
+11-12 23:01:48.833  2958  6228 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = com.google.android.gmsstatsTag = *walarm*:com.google.android.intent.action.GCM_RECONNECT @7683252 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:48.834 15786 15786 I chatty  : uid=10002(com.google.android.gms) expire 2 lines
+11-12 23:01:48.840 15786 15926 I chatty  : uid=10002(com.google.android.gms) highpool[1] expire 1 line
+11-12 23:01:48.862  2958  6228 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[3] packageName = com.google.android.gmsstatsTag = *alarm*:com.google.android.chimera.container.IntentOperationService.SAVED_INTENT @315367675282 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:48.872  2958  6228 D ConnectivityService: requestNetwork for uid/pid:10002/15786 NetworkRequest [ TRACK_DEFAULT id=113, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ]
+11-12 23:01:48.873  2958  3499 D ConnectivityService: NetReassign [113 : null → 100]
+11-12 23:01:48.874  2958  3528 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=113, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10002 AdministratorUids: [] RequestorUid: 10002 RequestorPackageName: com.google.android.gms] ] with score 60 and providerId 2
+11-12 23:01:48.890  2958  3448 W InputDispatcher: Still no focused window. Will drop the event in 5300ms
+11-12 23:01:48.908  2958  3448 W InputDispatcher: Still no focused window. Will drop the event in 5282ms
+11-12 23:01:48.909  2958  3448 W InputDispatcher: Still no focused window. Will drop the event in 5281ms
+11-12 23:01:48.909  2958  3448 D InputDispatcher: Waiting to send key to Window{342244a u0 com.homwee.aipont/com.homwee.aipont.activity.ChannelMainActivity} because there are unprocessed events that may cause focus to change
+11-12 23:01:48.910  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:48.913  2958  3448 D InputDispatcher: Waiting to send key to Window{342244a u0 com.homwee.aipont/com.homwee.aipont.activity.ChannelMainActivity} because there are unprocessed events that may cause focus to change
+11-12 23:01:48.917 15716 15716 I AI_PONT : =====onKey(AppsAdapter.java:394)=====:-------
+11-12 23:01:48.919 15716 15716 I AI_PONT : =====onKeyDown(ChannelMainActivity.java:189)=====:event.getKeyCode(): 22event.action:0
+11-12 23:01:48.926 15716 15716 I AI_PONT : =====onEventMainThread(PresenterMain.java:66)=====:
+11-12 23:01:48.927 15716 15716 I AI_PONT : =====onItemFocused(ChannelMainActivity.java:332)=====:position: 1
+11-12 23:01:48.940  2651  3063 D hwcomposer: HWComposerDisplayHalMiOsd::hwcMiDisplay: Layer[0]: show!!!!
+11-12 23:01:48.941 15716 15716 I AI_PONT : =====onKey(AppsAdapter.java:394)=====:-------
+11-12 23:01:49.020 15786 15805 I chatty  : uid=10002(com.google.android.gms) Binder:15786_2 expire 2 lines
+11-12 23:01:49.031  2958  5926 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+11-12 23:01:49.032  2958  5926 I chatty  : uid=1000(system) Binder:2958_17 identical 1 line
+11-12 23:01:49.038  2958  5926 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+11-12 23:01:49.056 15786 15807 I chatty  : uid=10002(com.google.android.gms) Binder:15786_3 expire 3 lines
+11-12 23:01:49.068 15786 15807 I FontLog : (REDACTED) Fetch %s end status %s
+11-12 23:01:49.069  2658  5327 I audio_hw_primary: mi_common_pcm_open: MI_PCM_Init OK, ret=0x2 !!
+11-12 23:01:49.079  2658  5327 I audio_hw_primary: mi_common_pcm_open: MI_PCM_Open OK, IO handle = 13, pcm_handle = 0x81000000, Channel 2, Sample rate 48000 !!
+11-12 23:01:49.081  2658  5327 I audio_hw_primary: mi_common_pcm_open: MI_AOUT_ConnectInput OK, MI_AOUT handle=0x17000000, MI_AOUT path=ALL, MI_PCM handle=0x81000000 !!
+11-12 23:01:49.081  2658  5327 D audio_hw_primary: mi_common_pcm_start: out 0xb0f24000, handle 0x81000000
+11-12 23:01:49.082  2658  5327 I audio_hw_primary: mi_common_pcm_start: MI_PCM_Start OK, handle=0x81000000
+11-12 23:01:49.082  2658  5327 D audio_hw_primary: mi_common_pcm_open: out 0xb0f24000, handle 0x81000000, device[speaker], path[HW DMA Reader1], format pcm, chn 2, sr 48000, dma input chn 2, blocking-mode 0
+11-12 23:01:49.083 15786 15805 I FontLog : (REDACTED) Font PFD returned from cache for %s
+11-12 23:01:49.084 15786 15805 I FontLog : (REDACTED) Fetch %s end status %s
+11-12 23:01:49.084  2841  2841 D MTK_KL  : 4,362520,7675598358,-;[MI_PCM_Open:1720][5327] PID:5327, Slot[0]:handle=0x81000000, s32PcmId:1, Device Name:HW DMA Reader1
+11-12 23:01:49.084  2841  2841 D MTK_KL  : 4,362521,7675600795,-;[_MI_AOUT_NotifyConnectInput:6908][5327] hAoutImpl:0x17000000, hInputImpl:0x81000000
+11-12 23:01:49.084  2841  2841 D MTK_KL  : 4,362522,7675601223,-;[Utopia][[AUDIO][ERROR]]: HAL_AUDIO_PCM_HwDma_Reader1_Write: Warning! PCM buffer empty!
+11-12 23:01:49.103  2658  5327 I audio_hw_primary: out_write: handle=13, current state(0) enter PLAY state
+11-12 23:01:49.132 15786 15805 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+11-12 23:01:49.133 15786 16005 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+11-12 23:01:49.168 15786 15844 I cxda    : (REDACTED) Shared storage file not found for %s
+11-12 23:01:49.198 15786 15844 I cxda    : (REDACTED) Unable to retrieve flag snapshot for %s, using defaults.
+11-12 23:01:49.211  2958  3436 I system_server: oneway function results will be dropped but finished with status OK and parcel size 4
+11-12 23:01:49.221 15786 16018 W gle.android.gm: Class daqg failed lock verification and will run slower.
+11-12 23:01:49.221 15786 16018 W gle.android.gm: Common causes for lock verification issues are non-optimized dex code
+11-12 23:01:49.221 15786 16018 W gle.android.gm: and incorrect proguard optimizations.
+11-12 23:01:49.230 15786 16034 I GCoreUlr: ULR code skipped on unsupported form factor.
+11-12 23:01:49.245 15786 16018 I AirplaneHeartbeatServic: Stopping airplane heartbeat service [CONTEXT service_id=6 ]
+11-12 23:01:49.279 15786 16033 I Nearby  : (REDACTED) is blocked device type %s, isAuto=%s, isIot=%s, isLatchsky=%s, isChinaWearable=%s, isTv=%s, isWearable=%s (supportWearOs=%s), isChromeOsDevice=%s (supportChromeOs=%s)
+11-12 23:01:49.294 15786 15906 I FacsCacheGmsModule: API connection successful!
+11-12 23:01:49.319 15786 16018 D CompatibilityChangeReporter: Compat change id reported: 150935354; UID 10002; state: ENABLED
+11-12 23:01:49.326 15786 15906 I FacsCacheGmsModule: (REDACTED) Received 'getActivityControlsSettings' request from package '%s', instance id '%s', version '%d'...
+11-12 23:01:49.332 15736 15736 I roid.tvlaunche: The ClassLoaderContext is a special shared library.
+11-12 23:01:49.344 15786 16018 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+11-12 23:01:49.346 15786 15930 I FacsCacheGmsModule: (REDACTED) Executing operation '%s'...
+11-12 23:01:49.359 15786 15906 I FacsCacheGmsModule: Operation 'getActivityControlsSettings' dispatched!
+11-12 23:01:49.364 15786 16018 W SystemServiceRegistry: No service published for: wifirtt
+11-12 23:01:49.422 15786 15786 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.time.trustedtime.singleuserapi.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentSingleUserInternalApiService }
+11-12 23:01:49.425 15786 15786 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.time.trustedtime.singleuserapi.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentSingleUserInternalApiService }
+11-12 23:01:49.464 15786 15799 I gle.android.gm: Background young concurrent copying GC freed 50388(2671KB) AllocSpace objects, 11(444KB) LOS objects, 11% free, 10MB/11MB, paused 13.367ms total 605.734ms
+11-12 23:01:49.465 15786 15897 W ServiceBindIntentUtils: Dynamic lookup for intent failed for action: com.google.android.gms.onboardingconsent.api.ConsentManagerApiService.START
+11-12 23:01:49.467  2958  5919 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.onboardingconsent.api.ConsentManagerApiService.START pkg=com.google.android.gms } U=0: not found
+11-12 23:01:49.469 15786 15801 W System  : A resource failed to call close. 
+11-12 23:01:49.473  2958  3436 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@c88c6c4
+11-12 23:01:49.476 15786 15897 W GmsClient: unable to connect to service: com.google.android.gms.onboardingconsent.api.ConsentManagerApiService.START on com.google.android.gms
+11-12 23:01:49.486  2958  3436 D ConnectivityService: requestNetwork for uid/pid:10026/15736 NetworkRequest [ TRACK_DEFAULT id=114, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ]
+11-12 23:01:49.487  2958  3499 D ConnectivityService: NetReassign [114 : null → 100]
+11-12 23:01:49.488 15736 15736 E Clearcut-EventLogger: Unexpected log parameter tray_notification_count
+11-12 23:01:49.490  2958  3484 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=114, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] with score 60 and providerId 2
+11-12 23:01:49.490  2958  3484 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=114, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] with score 60 and providerId 2
+11-12 23:01:49.490  2958  3528 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=114, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] with score 60 and providerId 2
+11-12 23:01:49.496 15786 15786 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.facs.internal.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-12 23:01:49.496 15786 15786 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.facs.internal.service.START dat=chimera-action: cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+11-12 23:01:49.600 15786 15930 I FacsCacheGmsModule: (REDACTED) Operation '%s' successful!
+11-12 23:01:49.609 15736 16063 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.619 15736 16061 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.637 15736 16064 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.656 15786 15786 D BoundBrokerSvc: onBind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-12 23:01:49.657 15786 15786 D BoundBrokerSvc: Loading bound service for intent: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action: cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-12 23:01:49.660 15786 15897 W GoogleApiManager: Not showing notification since connectionResult is not user-facing: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null, clientMethodKey=null, errorResolutionInfo=null}
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: Failed to submit consent location_mode=true to ConsentManager [CONTEXT service_id=6 ]
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: alsi: 17: API: ConsentManager.API is not available on this device. Connection failed with: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null, clientMethodKey=null, errorResolutionInfo=null}
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at amqc.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):15)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alug.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alud.e(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):5)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwt.u(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):47)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwt.g(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):10)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwt.j(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):190)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwv.run(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):84)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.handleCallback(Handler.java:938)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at bjjk.if(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at bjjk.dispatchMessage(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):146)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: Failed to submit consent network_location_opt_in=true to ConsentManager [CONTEXT service_id=6 ]
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: alsi: 17: API: ConsentManager.API is not available on this device. Connection failed with: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null, clientMethodKey=null, errorResolutionInfo=null}
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at amqc.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):15)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alug.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alud.e(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):5)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwt.u(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):47)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwt.g(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):10)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwt.j(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):190)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at alwv.run(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):84)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.handleCallback(Handler.java:938)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at bjjk.if(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at bjjk.dispatchMessage(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):146)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:49.666 15786 15786 W LocationConsentTransfer: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: Failed to submit consent wifi_scan_always_enabled=false to ConsentManager [CONTEXT service_id=6 ]
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: alsi: 17: API: ConsentManager.API is not available on this device. Connection failed with: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null, clientMethodKey=null, errorResolutionInfo=null}
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at amqc.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):15)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alug.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alud.e(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):5)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwt.u(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):47)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwt.g(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):10)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwt.j(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):190)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwv.run(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):84)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.handleCallback(Handler.java:938)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at bjjk.if(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at bjjk.dispatchMessage(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):146)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: Failed to submit consent ble_scan_always_enabled=false to ConsentManager [CONTEXT service_id=6 ]
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: alsi: 17: API: ConsentManager.API is not available on this device. Connection failed with: ConnectionResult{statusCode=API_UNAVAILABLE, resolution=null, message=null, clientMethodKey=null, errorResolutionInfo=null}
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at amqc.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):15)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alug.a(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alud.e(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):5)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwt.u(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):47)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwt.g(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):10)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwt.j(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):190)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at alwv.run(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):84)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.handleCallback(Handler.java:938)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at bjjk.if(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):1)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at bjjk.dispatchMessage(:com.google.android.gms@264330115@26.43.30 (180300-1006944126):146)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.Looper.loop(Looper.java:223)
+11-12 23:01:49.669 15786 15786 W LocationConsentTransfer: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+11-12 23:01:49.685 15786 16043 I FrewleMiniCache: (REDACTED) Loaded %d models from disk
+11-12 23:01:49.685 15786 16043 I FrewleMiniCache: (REDACTED) Oldest download timestamp: %s
+11-12 23:01:49.691 15736 16065 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.693  2958  3436 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[3] packageName = com.google.android.gmsstatsTag = *alarm*:com.google.android.gms.gcm.ACTION_CHECK_QUEUE @11276008 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:49.697 15736 16067 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.698 15736 16069 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.719 15736 16068 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.719 15736 16071 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.721 15736 16070 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.752 15736 16073 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.756 15786 15897 I FacsCacheGmsModule: Receiving API connection to internal FACS API...
+11-12 23:01:49.757 15786 15897 I FacsCacheGmsModule: API connection successful!
+11-12 23:01:49.760 15736 16072 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.770 15736 16074 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.774 15736 16075 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.784 15786 16040 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 8276205]
+11-12 23:01:49.785 15736 16076 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.785  2958  3436 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = com.google.android.gmsstatsTag = *walarm*:com.google.android.gms.gcm.HEARTBEAT_ALARM @8276205 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:49.799 15736 16077 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.801 15736 16078 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.813 15736 16079 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.813 15736 16080 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.821 15736 16081 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.827 15736 16082 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.849 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.863 15786 16018 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+11-12 23:01:49.875 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.876 15786 15823 I gle.android.gm: Waiting for a blocking GC ProfileSaver
+11-12 23:01:49.877 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.879 15736 16086 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.903 15736 16087 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.904 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.906 15736 16089 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.907 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.909  2958  3436 D ConnectivityService: requestNetwork for uid/pid:10026/15736 NetworkRequest [ TRACK_DEFAULT id=115, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ]
+11-12 23:01:49.910  2958  3499 D ConnectivityService: NetReassign [115 : null → 100]
+11-12 23:01:49.911 15736 16091 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.913  2958  3484 D UntrustedWifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=115, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] with score 60 and providerId 2
+11-12 23:01:49.913  2958  3484 D WifiNetworkFactory: got request NetworkRequest [ TRACK_DEFAULT id=115, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] with score 60 and providerId 2
+11-12 23:01:49.913  2958  3528 D Ethernet: got request NetworkRequest [ TRACK_DEFAULT id=115, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED Uid: 10026 AdministratorUids: [] RequestorUid: 10026 RequestorPackageName: com.google.android.tvlauncher] ] with score 60 and providerId 2
+11-12 23:01:49.916  3644  5000 D RecommendedChannelsThread: [MtkLog]start, status==false,mLauncherRunning==false
+11-12 23:01:49.922 15736 15875 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.939 15786 16043 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 8276360]
+11-12 23:01:49.940  2958  4277 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = com.google.android.gmsstatsTag = *walarm*:com.google.android.gms.gcm.HEARTBEAT_ALARM @8276360 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:49.940 15736 15754 I roid.tvlaunche: Background young concurrent copying GC freed 44892(2023KB) AllocSpace objects, 10(328KB) LOS objects, 8% free, 10MB/11MB, paused 3.643ms total 517.597ms
+11-12 23:01:49.942 15736 16063 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 332.861ms
+11-12 23:01:49.943 15736 16064 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 305.785ms
+11-12 23:01:49.943 15736 16061 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 324.244ms
+11-12 23:01:49.944 15736 16065 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 253.049ms
+11-12 23:01:49.944 15736 16071 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 224.716ms
+11-12 23:01:49.944 15736 16072 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 184.079ms
+11-12 23:01:49.944 15736 16067 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.944 15736 16075 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.944 15736 16076 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16069 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16068 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16079 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16080 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16081 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16082 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16070 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16073 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.945 15736 16077 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16078 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16087 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 15875 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16089 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16086 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.946 15736 16091 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.947 15736 16074 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.947 15736 16067 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 249.693ms
+11-12 23:01:49.947 15736 16075 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 172.926ms
+11-12 23:01:49.947 15736 16076 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.947 15736 16068 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16079 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16080 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16081 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16082 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16070 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16073 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16077 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16078 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16087 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.948 15736 16089 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 42.302ms
+11-12 23:01:49.949 15736 16086 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 70.205ms
+11-12 23:01:49.949 15736 15875 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16074 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16068 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16076 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16080 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16081 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16082 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16070 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16073 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16077 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16078 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.949 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.950 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.950 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.950 15736 16087 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.951 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.951 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.951 15736 16091 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.951 15736 16069 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.951 15736 16079 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 138.393ms
+11-12 23:01:49.951 15736 15875 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 29.087ms
+11-12 23:01:49.952 15736 16074 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.952 15736 16068 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.953 15736 16076 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.953 15736 16080 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.953 15736 16081 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.953 15736 16082 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16070 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16073 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16077 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16078 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16091 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16069 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.954 15736 16087 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.959 15736 16074 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 189.252ms
+11-12 23:01:49.960 15736 16068 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 241.055ms
+11-12 23:01:49.960 15736 16076 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 175.635ms
+11-12 23:01:49.960 15736 16080 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 146.996ms
+11-12 23:01:49.960 15736 16070 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.960 15736 16082 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.960 15736 16073 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.961 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.961 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.961 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.961 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.963 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.963 15736 16091 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.963 15736 16069 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.963 15736 16087 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.964 15736 16081 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 142.852ms
+11-12 23:01:49.964 15736 16078 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 163.588ms
+11-12 23:01:49.964 15736 16070 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 243.737ms
+11-12 23:01:49.964 15736 16082 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 136.933ms
+11-12 23:01:49.964 15736 16077 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.964 15736 16084 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.964 15736 16088 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.965 15736 16090 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.965 15736 16091 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.965 15736 16069 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.965 15736 16083 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.965 15736 16085 I roid.tvlaunche: Waiting for a blocking GC ClassLinker
+11-12 23:01:49.965 15736 16073 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 213.135ms
+11-12 23:01:49.965 15736 16087 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 62.582ms
+11-12 23:01:49.965 15736 16077 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 165.802ms
+11-12 23:01:49.965 15736 16084 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 115.873ms
+11-12 23:01:49.965 15736 16088 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 61.161ms
+11-12 23:01:49.965 15736 16091 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 54.053ms
+11-12 23:01:49.965 15736 16090 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 58.229ms
+11-12 23:01:49.966 15736 16069 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 267.217ms
+11-12 23:01:49.966 15736 16085 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 88.939ms
+11-12 23:01:49.966 15736 16083 I roid.tvlaunche: WaitForGcToComplete blocked ClassLinker on ClassLinker for 90.591ms
+11-12 23:01:50.006  2958  2967 I system_server: Background concurrent copying GC freed 89753(3900KB) AllocSpace objects, 9(388KB) LOS objects, 25% free, 13MB/18MB, paused 252us total 474.907ms
+11-12 23:01:50.010 15786 16043 I AlarmManager: setExactAndAllowWhileIdle [name: GCM_HB_ALARM type: 2 triggerAtMillis: 8276431]
+11-12 23:01:50.011  2958  3436 I AlarmManager: Change Wakeup Alarm type to non Wakeup type, current type=[2] packageName = com.google.android.gmsstatsTag = *walarm*:com.google.android.gms.gcm.HEARTBEAT_ALARM @8276431 and next wakeup alarm is @Thu Nov 12 23:54:30 GMT+05:30 2026
+11-12 23:01:50.011 15786 16033 I GCoreUlr: ULR code skipped on unsupported form factor.
+11-12 23:01:50.069 15736 15736 W View    : requestLayout() improperly called by android.widget.FrameLayout{a033808 V.E...... ......ID 0,0-1280,720 #7f0b008f app:id/background_image_container} during layout: running second layout pass
+11-12 23:01:50.069 15736 15736 W View    : requestLayout() improperly called by android.widget.FrameLayout{ca17ba1 V.E...... ......ID 428,0-1280,479 #7f0b011b app:id/current_image} during layout: running second layout pass
+11-12 23:01:50.069 15736 15736 W View    : requestLayout() improperly called by android.widget.FrameLayout{3f2e1c6 I.E...... ......ID 428,0-1280,479 #7f0b033c app:id/old_image} during layout: running second layout pass
+11-12 23:01:50.072 15736 15736 E Clearcut-EventLogger: Unexpected log parameter home_selected_row_position
+11-12 23:01:50.072 15736 15736 W HomeController: onResume: List view global layout completed.
+11-12 23:01:50.110 15786 15799 I gle.android.gm: Background concurrent copying GC freed 110296(4974KB) AllocSpace objects, 6(120KB) LOS objects, 24% free, 8353KB/10MB, paused 924us total 521.869ms
+11-12 23:01:50.110 15786 15823 I gle.android.gm: WaitForGcToComplete blocked ProfileSaver on ClassLinker for 233.325ms
+11-12 23:01:50.133 15786 15799 I gle.android.gm: WaitForGcToComplete blocked RunEmptyCheckpoint on ProfileSaver for 17.958ms
+11-12 23:01:50.178  2340  2340 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device manifest.
+11-12 23:01:50.178 15736 15835 I Gralloc4: mapper 4.x is not supported
+11-12 23:01:50.179  2340  2340 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@3.0::IMapper/default in either framework or device manifest.
+11-12 23:01:50.179 15736 15835 W Gralloc3: mapper 3.x is not supported
+11-12 23:01:50.183  2841  2841 D MTK_KL  : 31,362523,7676699949,-;logd: logdr: UID=2000 GID=2000 PID=16098 n tail=0 logMask=99 pid=0 start=0ns timeout=0ns
+11-12 23:01:50.207 15736 15835 D gralloc : [ion_open:103] mma_open()
+11-12 23:01:50.207 15736 15835 D gralloc : [mma_open:49] 
+11-12 23:01:50.207 15736 15835 D gralloc : [ion_open:116] mma_open() failed! status=-19 errno=2
+11-12 23:01:50.241 15736 15835 I OpenGLRenderer: Davey! duration=2403ms; Flags=1, IntendedVsync=7674225620588, Vsync=7674458953912, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=7674463823801, AnimationStart=7674463830467, PerformTraversalsStart=7674463835551, DrawStart=7676497002626, SyncQueued=7676596986459, SyncStart=7676629839042, IssueDrawCommandsStart=7676630516042, SwapBuffers=7676660739209, FrameCompleted=7676662263459, DequeueBufferDuration=0, QueueBufferDuration=945500, GpuCompleted=-8622652630594003079, 
+11-12 23:01:50.264 15736 15736 E Clearcut-EventLogger: Unexpected log parameter shown_channel_count

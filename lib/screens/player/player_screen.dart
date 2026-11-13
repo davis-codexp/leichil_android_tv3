@@ -80,6 +80,9 @@ Duration? _seekPreviewPosition;
   }
 
   Future<void> _initializePlayer() async {
+    await _disposeCurrentController();
+
+if (!mounted) return;
     final url = widget.streamUrl?.trim();
 
     if (url == null || url.isEmpty) {
@@ -389,6 +392,21 @@ Duration? _seekPreviewPosition;
     }
   }
 
+  Future<void> _disposeCurrentController() async {
+  final oldController = _controller;
+  _controller = null;
+
+  if (oldController == null) return;
+
+  oldController.removeListener(_videoListener);
+
+  try {
+    await oldController.dispose();
+  } catch (e) {
+    debugPrint('PLAYER DISPOSE ERROR: $e');
+  }
+}
+
   Future<void> _seekBy(Duration amount) async {
     final controller = _controller;
 
@@ -521,14 +539,22 @@ Duration? _seekPreviewPosition;
       }
     }
 
-    if (key == LogicalKeyboardKey.escape ||
-        key == LogicalKeyboardKey.browserBack ||
-        key == LogicalKeyboardKey.backspace ||
-        key == LogicalKeyboardKey.goBack) {
-      _exitPlayer();
+    // if (key == LogicalKeyboardKey.escape ||
+    //     key == LogicalKeyboardKey.browserBack ||
+    //     key == LogicalKeyboardKey.backspace ||
+    //     key == LogicalKeyboardKey.goBack) {
+    //   _exitPlayer();
 
-      return KeyEventResult.handled;
-    }
+    //   return KeyEventResult.handled;
+    // }
+
+    if (key == LogicalKeyboardKey.escape ||
+    key == LogicalKeyboardKey.browserBack ||
+    key == LogicalKeyboardKey.backspace ||
+    key == LogicalKeyboardKey.goBack) {
+  // Let Android/Flutter handle the physical Back event.
+  return KeyEventResult.ignored;
+}
 
     if (key == LogicalKeyboardKey.arrowLeft ||
         key == LogicalKeyboardKey.arrowRight ||
@@ -956,15 +982,19 @@ Future<void> _commitPendingSeek() async {
   //   Navigator.of(context).pop();
   // }
 
-  void _exitPlayer() {
-  final navigator = Navigator.of(
-    context,
-    rootNavigator: true,
-  );
+//   void _exitPlayer() {
+//   final navigator = Navigator.of(
+//     context,
+//     rootNavigator: true,
+//   );
 
-  if (navigator.canPop()) {
-    navigator.pop();
-  }
+//   if (navigator.canPop()) {
+//     navigator.pop();
+//   }
+// }
+
+void _exitPlayer() {
+  Navigator.of(context).maybePop();
 }
 
   String _formatDuration(Duration duration) {
@@ -1523,9 +1553,13 @@ final duration = value.duration;
     _nextEpisodeCountdownTimer?.cancel();
     _seekCommitTimer?.cancel();
 
-    _controller?.removeListener(_videoListener);
+   final controller = _controller;
+_controller = null;
 
-    _controller?.dispose();
+if (controller != null) {
+  controller.removeListener(_videoListener);
+  unawaited(controller.dispose());
+}
 
     if (!_isReplacingForNextEpisode) {
       SystemChrome.setPreferredOrientations([
