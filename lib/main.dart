@@ -26,34 +26,34 @@ class LeichilTV extends StatelessWidget {
         child: child ?? const SizedBox.shrink(),
       ),
       onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/checkout':
             final args = settings.arguments is Map
                 ? Map<String, dynamic>.from(settings.arguments as Map)
                 : <String, dynamic>{};
 
             final rawPrice = args['price'];
-            final moviePrice = rawPrice is num
+            final price = rawPrice is num
                 ? rawPrice.toInt()
                 : int.tryParse(rawPrice?.toString() ?? '') ?? 0;
-
+        switch (settings.name) {
+          case '/checkout':
             return MaterialPageRoute<void>(
               settings: settings,
               builder: (_) => CheckoutScreen(
                 title: args['title']?.toString() ?? 'Movie',
                 posterUrl: args['posterUrl']?.toString(),
-                moviePrice: moviePrice,
-                // The checkout UI includes a one-month subscription
-                // and an equal discount, so the subscription is free.
-                subscriptionPrice: 49,
-                subscriptionDiscount: 49,
+                moviePrice: price,
+                qrImg: args["qrImg"]?.toString() ?? "",
               ),
             );
 
           case '/subscription':
             return MaterialPageRoute<void>(
-              settings: settings,
-              builder: (_) => const SubscriptionScreen(),
+                settings: settings,
+                builder: (_) => SubscriptionScreen(
+                    planName: args["planName"]?.toString() ?? "BASIC",
+                    price: price,
+                    qrImg: args["qrImg"]?.toString() ?? "", 
+                ),
             );
 
           default:

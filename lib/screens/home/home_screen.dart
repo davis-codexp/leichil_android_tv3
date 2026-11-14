@@ -14,6 +14,7 @@ import '../checkouts_and_subscriptions/subscription_screen.dart';
 import '../player/player_screen.dart';
 import '../view_all/view_all_screen.dart';
 import '../../services/api_service.dart';
+import '../../services/helper_service.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback? onFocusSidebar;
@@ -350,6 +351,20 @@ class _HomeScreenState extends State<HomeScreen> {
       return;
     }
 
+    String qrImg = "";
+
+        try {
+            final response = await ApiService.post("/api/v1/app/orders/qr", {"content_id": id}); 
+            if (!mounted) return;
+            if (response.statusCode == 200 && response.data["success"] == true) {
+                qrImg = response.data["result"];
+                debugPrint("$id");
+            }
+        } catch(err) {
+            debugPrint("$err");
+            return;
+        }
+
     try {
       // Fetch the latest content details before checking access.
       final response = await ContentService.getContent(id);
@@ -410,10 +425,9 @@ class _HomeScreenState extends State<HomeScreen> {
             MaterialPageRoute(
               builder: (_) => CheckoutScreen(
                 title: title,
-                posterUrl: posterUrl,
+                posterUrl: HelperService.imageURL(posterUrl),
                 moviePrice: price,
-                subscriptionPrice: 49,
-                subscriptionDiscount: 49,
+                qrImg: qrImg,
               ),
             ),
           );
@@ -423,22 +437,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
       // Subscription content requires an active subscription.
       if (isSubscription) {
-        final subscriptionResponse =
-            await ContentService.verifySubscription();
-
+        final subscriptionResponse = await ContentService.verifySubscription();
         if (!mounted) return;
-
         final hasSubscription = subscriptionResponse.statusCode == 200 &&
             subscriptionResponse.data is Map &&
             subscriptionResponse.data['success'] == true;
 
         if (!hasSubscription) {
-          Navigator.of(context, rootNavigator: true).push(
-            MaterialPageRoute(
-              builder: (_) => const SubscriptionScreen(),
-            ),
-          );
-          return;
+            try {
+                final response = await ApiService.get("/api/v1/app/subscription-plans"); 
+                if (!mounted) return;
+                if (response.statusCode == 200 && response.data["success"] == true) {
+                    final result = response.data["result"]["list"][0];
+                    Map<String, dynamic>.from(result);
+                    String planName = result["name"];
+                    int price = result["price"];
+                    Navigator.of(context, rootNavigator: true).push(
+                        MaterialPageRoute(
+                            builder: (_) => SubscriptionScreen(
+                                planName: planName,
+                                price: price,
+                                qrImg: qrImg,  
+                            ),
+                        ),
+                    );
+                    return;
+                }
+            } catch(err) {
+                debugPrint("$err");
+                return;
+            }
         }
       }
 
