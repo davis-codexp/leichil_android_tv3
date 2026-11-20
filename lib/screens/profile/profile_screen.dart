@@ -22,7 +22,7 @@ class ProfileScreen extends StatefulWidget {
 
   final VoidCallback? onBack;
   final VoidCallback? onLogout;
-  final VoidCallback? onFaq;
+  final VoidCallback? onFaq; // Retained for compatibility; FAQ menu is removed.
   final VoidCallback? onCompanyInfo;
 
   final String userName;
@@ -45,6 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _isLoadingSubscription = true;
   String? _profileError;
   String? _subscriptionError;
+  bool _isLoggingOut = false;
 
   @override
   void initState() {
@@ -138,31 +139,150 @@ class _ProfileScreenState extends State<ProfileScreen> {
   static const Color _green = Color(0xFF27E58B);
   static const Color _red = Color(0xFFFF5369);
 
-  void _showInfo(BuildContext context, String title, String message) {
+  void _showCompanyInfo() {
     showDialog<void>(
+      context: context,
+      builder: (dialogContext) => Dialog(
+        backgroundColor: _surface,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(22),
+          side: BorderSide(color: _cyan.withValues(alpha: 0.25)),
+        ),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 560),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(30, 26, 30, 22),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Company Contact Details',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                _buildContactDetail(
+                  icon: Icons.email_outlined,
+                  label: 'Email',
+                  value: 'contact@ironbladelabs.com',
+                ),
+                const SizedBox(height: 20),
+                _buildContactDetail(
+                  icon: Icons.phone_outlined,
+                  label: 'Phone',
+                  value: '8787432885',
+                ),
+                const SizedBox(height: 20),
+                _buildContactDetail(
+                  icon: Icons.chat_outlined,
+                  label: 'WhatsApp',
+                  value: '8787432885',
+                ),
+                const SizedBox(height: 26),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    autofocus: true,
+                    onPressed: () => Navigator.of(dialogContext).pop(),
+                    child: const Text(
+                      'Close',
+                      style: TextStyle(
+                        color: _cyan,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _confirmLogout() async {
+    if (_isLoggingOut) return;
+
+    final shouldLogout = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
         backgroundColor: _surface,
-        title: Text(
-          title,
-          style: const TextStyle(color: Colors.white),
+        title: const Text(
+          'Logout',
+          style: TextStyle(color: Colors.white),
         ),
-        content: Text(
-          message,
-          style: const TextStyle(color: _muted),
+        content: const Text(
+          'Are you sure you want to sign out of your LeichilTV account?',
+          style: TextStyle(color: _muted),
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.of(dialogContext).pop(),
+            onPressed: () => Navigator.of(dialogContext).pop(false),
             child: const Text(
-              'Close',
-              style: TextStyle(color: _cyan),
+              'Cancel',
+              style: TextStyle(color: _muted),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: const Text(
+              'Logout',
+              style: TextStyle(color: _red),
             ),
           ),
         ],
       ),
     );
+
+    if (shouldLogout == true && mounted) {
+      await _performLogout();
+    }
   }
+
+Future<void> _performLogout() async {
+  setState(() {
+    _isLoggingOut = true;
+  });
+
+  try {
+    // Clear the locally stored authentication session.
+    await AuthStorage.clearSession();
+
+    if (!mounted) return;
+
+    // Let the parent screen navigate to LoginScreen.
+    if (widget.onLogout != null) {
+      widget.onLogout!.call();
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Logged out successfully'),
+        ),
+      );
+    }
+  } catch (e) {
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Logout failed: $e'),
+      ),
+    );
+  } finally {
+    if (mounted) {
+      setState(() {
+        _isLoggingOut = false;
+      });
+    }
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -272,11 +392,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: [
                               _buildMenuItem(
                                 context: context,
-                                icon: Icons.help_outline_rounded,
-                                title: 'FAQ',
+                                icon: Icons.apartment_rounded,
+                                title: 'Company Information',
                                 subtitle:
-                                    'Find answers to common questions',
-                                iconColor: const Color(0xFF63B8FF),
+                                    'About LeichilTV and contact details',
+                                iconColor: const Color(0xFFDAE7FF),
                                 focusNode: widget.entryFocusNode,
                                 autofocus: widget.entryFocusNode == null,
                                 onKeyEvent: (_, event) {
@@ -289,42 +409,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   }
                                   return KeyEventResult.ignored;
                                 },
-                                onPressed: widget.onFaq ??
-                                    () => _showInfo(
-                                          context,
-                                          'FAQ',
-                                          'FAQ content will be connected '
-                                              'here.',
-                                        ),
-                              ),
-
-                              const SizedBox(height: 14),
-
-                              _buildMenuItem(
-                                context: context,
-                                icon: Icons.apartment_rounded,
-                                title: 'Company Information',
-                                subtitle:
-                                    'About LeichilTV and contact details',
-                                iconColor: const Color(0xFFDAE7FF),
-                                onKeyEvent: (_, event) {
-                                  if ((event is KeyDownEvent ||
-                                          event is KeyRepeatEvent) &&
-                                      event.logicalKey ==
-                                          LogicalKeyboardKey.arrowLeft) {
-                                    widget.onFocusSidebar?.call();
-                                    return KeyEventResult.handled;
-                                  }
-                                  return KeyEventResult.ignored;
-                                },
                                 onPressed: widget.onCompanyInfo ??
-                                    () => _showInfo(
-                                          context,
-                                          'About LeichilTV',
-                                          'LeichilTV is your regional '
-                                              'streaming platform for '
-                                              'movies, series and more.',
-                                        ),
+                                    _showCompanyInfo,
                               ),
 
                               const SizedBox(height: 18),
@@ -608,50 +694,90 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildCompanySummary() {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(4, 4, 4, 8),
-      child: const Column(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: _surface,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(
+          color: Colors.white.withValues(alpha: 0.08),
+        ),
+      ),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'About LeichilTV',
+          const Text(
+            'Contact & Support',
             style: TextStyle(
               color: Colors.white,
               fontSize: 19,
               fontWeight: FontWeight.w800,
             ),
           ),
-          SizedBox(height: 10),
-          Text(
-            'Your destination for regional movies, series '
-            'and entertainment.',
+          const SizedBox(height: 8),
+          const Text(
+            'Iron Blade Labs',
             style: TextStyle(
               color: _muted,
-              fontSize: 14,
-              height: 1.6,
+              fontSize: 13,
             ),
           ),
-          SizedBox(height: 15),
-          Row(
+          const SizedBox(height: 18),
+          _buildContactDetail(
+            icon: Icons.email_outlined,
+            label: 'Email',
+            value: 'contact@ironbladelabs.com',
+          ),
+          const SizedBox(height: 15),
+          _buildContactDetail(
+            icon: Icons.phone_outlined,
+            label: 'Phone',
+            value: '8787432885',
+          ),
+          const SizedBox(height: 15),
+          _buildContactDetail(
+            icon: Icons.chat_outlined,
+            label: 'WhatsApp',
+            value: '8787432885',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildContactDetail({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, color: _cyan, size: 20),
+        const SizedBox(width: 11),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(
-                Icons.live_tv_rounded,
-                color: _cyan,
-                size: 19,
+              Text(
+                label,
+                style: const TextStyle(
+                  color: _muted,
+                  fontSize: 12,
+                ),
               ),
-              SizedBox(width: 9),
-              Expanded(
-                child: Text(
-                  'Movies • Series • Regional content',
-                  style: TextStyle(
-                    color: _muted,
-                    fontSize: 12,
-                  ),
+              const SizedBox(height: 3),
+              SelectableText(
+                value,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -749,12 +875,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return TvFocusWrapper(
       style: TvFocusStyle.button,
       onKeyEvent: onKeyEvent,
-      onPressed: widget.onLogout ??
-          () => _showInfo(
-                context,
-                'Logout',
-                'Connect your existing logout callback to sign out.',
-              ),
+      onPressed: _confirmLogout,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(
@@ -768,13 +889,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
             color: _red.withValues(alpha: 0.4),
           ),
         ),
-        child: const Row(
+        child: Row(
           children: [
-            Icon(
-              Icons.logout_rounded,
-              color: _red,
-              size: 29,
-            ),
+            if (_isLoggingOut)
+              SizedBox(
+                width: 29,
+                height: 29,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.5,
+                  color: _red,
+                ),
+              )
+            else
+              Icon(
+                Icons.logout_rounded,
+                color: _red,
+                size: 29,
+              ),
             SizedBox(width: 20),
             Expanded(
               child: Column(

@@ -23,6 +23,7 @@ dependencies:
   volume_controller: ^3.7.1
   cached_network_image: ^3.4.1
   palette_generator: ^0.3.3+7
+  wakelock_plus: ^1.8.2
 
 dev_dependencies:
   flutter_test:

@@ -18,8 +18,7 @@ class ApiResponse {
 
 class ApiService {
     ApiService._();
-    //static const String baseUrl = 'https://leichiltv.com';
-    static const String baseUrl = 'http://192.168.0.169:9999';
+    static const String baseUrl = 'https://leichiltv.com';
 
   static Future<Map<String, String>> _headers() async {
     final token = await AuthStorage.getToken();

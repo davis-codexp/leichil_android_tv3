@@ -1045,36 +1045,37 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
-  Widget _buildDetails() {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        AppDimensions.screenHorizontal,
-
-        30,
-
-        AppDimensions.screenHorizontal,
-
-        70,
-      ),
-
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-
-        children: [
-          if (_hasCast) ...[const SizedBox(height: 40), _buildCastSection()],
-
-          if (_isSeries) ...[
-            const SizedBox(height: 40),
-            _buildEpisodesSection(),
-          ],
-
-          const SizedBox(height: 40),
-
-          if (_isSeries) _buildSeriesLikeThis() else _buildMoviesLikeThis(),
+Widget _buildDetails() {
+  return Padding(
+    padding: EdgeInsets.fromLTRB(
+      AppDimensions.screenHorizontal,
+      0,
+      AppDimensions.screenHorizontal,
+      70,
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (_hasCast) ...[
+          const SizedBox(height: 0),
+          _buildCastSection(),
         ],
-      ),
-    );
-  }
+
+        if (_isSeries) ...[
+          const SizedBox(height: 24),
+          _buildEpisodesSection(),
+        ],
+
+        const SizedBox(height: 30),
+
+        if (_isSeries)
+          _buildSeriesLikeThis()
+        else
+          _buildMoviesLikeThis(),
+      ],
+    ),
+  );
+}
 
   Widget _buildEpisodesSection() {
     final seasons = _seasonCount();
